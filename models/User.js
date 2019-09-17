@@ -17,7 +17,16 @@ const userSchema = new Schema({
   profile: {
     ref: 'Profile',
     type: Schema.Types.ObjectId
-  }
+  },
+  status: {
+    type: String,
+    enum: ['Pending Confirmation', 'Active'],
+    default:'Pending Confirmation'
+  },
+  confirmationCode:{
+    type: String,
+    unique:true
+  },
 }, {
   timestamps: true
 })
