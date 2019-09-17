@@ -1,7 +1,11 @@
-const {
-  Schema,
-  model
-} = require('Mongoose')
-const Schema = new Schema
-
-module.exports = model('', Schema)
+const {Schema,model} = require('Mongoose')
+const commentSchema = new Schema({
+  content: String, 
+  author: {
+    ref: 'User',
+    type: Schema.Types.ObjectId
+  }, {
+  timestamps: true
+  }
+})
+module.exports = model('Comment', commentSchema)

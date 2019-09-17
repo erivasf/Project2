@@ -1,10 +1,10 @@
 {
-  "name": "tiendita-mehn",
+  "name": "parkit",
   "version": "0.0.0",
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "dev": "DEBUG=tiendita-mehn:* nodemon ./bin/www",
+    "dev": "DEBUG=parkit:* nodemon ./bin/www",
     "dev-windows": "nodemon ./bin/www"
   },
   "dependencies": {
