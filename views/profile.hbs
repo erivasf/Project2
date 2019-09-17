@@ -34,9 +34,9 @@
           </p>
         </div>
         <div id = 'buttons'>
-          <a id = "want" class="button is-primary">Looking for a space</a>
-          <a id = "have" class="button is-primary">I have a space</a>
-          <a id = "both" class="button is-primary">Both</a>
+          <a id = "want" class="button is-primary" onclick="displayWant()">Looking for a space</a>
+          <a id = "have" class="button is-primary" onclick="displayHave()">I have a space</a>
+          <a id = "both" class="button is-primary" onclick="displayBoth()">Both</a>
         </div>
         <section id="Formularies">
         <div id="want-form">
@@ -68,6 +68,9 @@
                 </div>
               </div>
         </div>
+        <br>
+        <hr>
+        <br>
         <div id="have-form">
           <h1 class="title">I have an unused space</h1>
           <div>
@@ -111,15 +114,15 @@
               </label>
             </div>
           </div>
+          <div class="field">
+            <p class="control">
+              <button class="button is-primary">
+                Update
+              </button>
+            </p>
+          </div>
         </div>
         </section>
-        <div class="field">
-          <p class="control">
-            <button class="button is-primary">
-              Update
-            </button>
-          </p>
-        </div>
       </form>
     </div>
   </div>
@@ -173,4 +176,19 @@
         .addTo(map);
     })
   }
+  // Funcionalidad de los botones
+
+  function displayWant(){
+    document.getElementById('want-form').style.display='block'
+    document.getElementById('have-form').style.display ='none'
+  }
+  function displayHave() {
+      document.getElementById('have-form').style.display='block'
+      document.getElementById('want-form').style.display ='none'
+  }
+  function displayBoth() {
+      document.getElementById('want-form').style.display='block'
+      document.getElementById('have-form').style.display='block'
+  }
+
 </script>
