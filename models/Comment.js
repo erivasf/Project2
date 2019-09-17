@@ -4,8 +4,9 @@ const commentSchema = new Schema({
   author: {
     ref: 'User',
     type: Schema.Types.ObjectId
-  }, {
+  }
+}, {
   timestamps: true
   }
-})
+)
 module.exports = model('Comment', commentSchema)

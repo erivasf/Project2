@@ -12,9 +12,11 @@ const carSchema = new Schema({
       type: String,
       enum: ['S', 'M', 'L'], 
       required: true,
-  },{
+  }
+},
+  {
   timestamps: true
   }
-})
+)
 
 module.exports = model('Car', carSchema)

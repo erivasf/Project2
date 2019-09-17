@@ -12,7 +12,7 @@ const userSchema = new Schema({
   },
   role: {
     type: String,
-    enum: ['P1', 'P2']
+    enum: ['HAVE', 'WANT', 'BOTH']
   },
   profile: {
     ref: 'Profile',
@@ -27,7 +27,22 @@ const userSchema = new Schema({
     type: String,
     unique:true
   },
-}, {
+  space: {
+  ref: 'Space',
+  type: Schema.Types.ObjectId
+}, 
+  car: {
+    ref: 'Car', 
+    type: Schema.Types.ObjectId
+  }
+},{
+  profileComplete: {
+    type: String, 
+    enum:['Complete Profile', 'Incomplete Profile'], 
+    default: 'Incomplete Profile'
+  }
+},
+ {
   timestamps: true
 })
 

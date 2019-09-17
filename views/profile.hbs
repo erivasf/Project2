@@ -1,10 +1,11 @@
 <section class="section">
   <div class="container">
-    <h1 class="is-size-2">Profile</h1>
+    <h1 class="title">Complete your register</h1>
     <img src="{{profile.img}}" alt="{{email}}" width="200" />
     <div class="box">
       <form action="/profile/edit" method="POST" enctype="multipart/form-data">
-        <div class="file has-name is-boxed">
+        <label for="profile-picture" class="label">Profile Picture</label>
+        <div class="file has-name is-fullwidth">
           <label class="file-label">
             <input class="file-input" type="file" name="photo">
             <span class="file-cta">
@@ -21,8 +22,9 @@
           </label>
         </div>
         <div class="field">
+          <label for="name" class="label">Username</label>
           <p class="control has-icons-left has-icons-right">
-            <input value="{{profile.name}}" class="input" type="text" name="name" placeholder="Nombre de Usuario">
+            <input class="input" type="text" name="name" placeholder="Nombre de Usuario">
             <span class="icon is-small is-left">
               <i class="fas fa-user"></i>
             </span>
@@ -31,9 +33,89 @@
             </span>
           </p>
         </div>
+        <div id = 'buttons'>
+          <a id = "want" class="button is-primary">Looking for a space</a>
+          <a id = "have" class="button is-primary">I have a space</a>
+          <a id = "both" class="button is-primary">Both</a>
+        </div>
+        <section id="Formularies">
+        <div id="want-form">
+          <h2 class="title">Looking for a space</h2>
+          <div class = "field">
+            <label class = "label">Plate Number</label>
+            <div class = "control"> 
+              <input class = "input"type="text" name = "plateNumber" placeholder="Example: 754Y6V">
+            </div>
+          </div>
+            <div class="field">
+              <label class="label">Model</label>
+              <div class="control">
+                <input class="input" type="text" name = "model" placeholder="Example: Nissan Versa">
+              </div>
+            </div>
+              <div class="field">
+                <label class="label">Dimensions</label>
+                <div class="control">
+                  <label class="radio">
+                    <input type="radio" name="dimensions"> Small
+                  </label>
+                  <label class="radio">
+                      <input type="radio" name="dimensions"> Medium
+                  </label>
+                  <label class="radio">
+                    <input type="radio" name="dimensions"> Large
+                  </label>
+                </div>
+              </div>
+        </div>
+        <div id="have-form">
+          <h1 class="title">I have an unused space</h1>
+          <div>
+            <div id="search">
+            </div>
+          </div>
+          <p>Search your location in the map:</p>
+          <div id="map" style="width: 500px; height: 500px"></div>
+
+          <div class="field">
+            <label class="label">Adress</label>
+            <div class="control">
+              <input id="address" class="input" type="text" name="plateNumber" placeholder="Example: Tonalá 10, Roma Norte, Ciudad de México">
+            </div>
+            <label class="label">Lat</label>
+            <div class="control">
+              <input type="text" name="lat" id="lat">
+            </div>
+            <label class="label">Lng</label>
+            <div class="control">
+              <input type="text" name="lng" id="lng">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Model</label>
+            <div class="control">
+              <input class="input" type="text" name="model" placeholder="Example: Nissan Versa">
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Dimensions</label>
+            <div class="control">
+              <label class="radio">
+                <input type="radio" name="dimensions"> Small
+              </label>
+              <label class="radio">
+                <input type="radio" name="dimensions"> Medium
+              </label>
+              <label class="radio">
+                <input type="radio" name="dimensions"> Large
+              </label>
+            </div>
+          </div>
+        </div>
+        </section>
         <div class="field">
           <p class="control">
-            <button class="button">
+            <button class="button is-primary">
               Update
             </button>
           </p>
@@ -42,3 +124,53 @@
     </div>
   </div>
 </section>
+{{!-- SearchBar style in map --}}
+{{!-- <style>
+#search {
+  position: absolute;
+  z-index: 1;
+}
+</style> --}}
+{{!-- Map instance --}}
+<script>
+  mapboxgl.accessToken = 'pk.eyJ1IjoiZXJpdmFzZiIsImEiOiJjazBkeG8ydmowYzRuM2JvYjVwbWc5eHkzIn0.sGUiEoqhR6A8o7tgvi2qMA'
+  const map = new mapboxgl.Map({
+    container: "map",
+    style: "mapbox://styles/mapbox/streets-v10",
+  });
+
+  const geocoder = new MapboxGeocoder({ accessToken:mapboxgl.accessToken}, 'top-left')
+ {{!-- map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken }), 'top-left') --}}
+
+  document.getElementById("search").appendChild(geocoder.onAdd(map))
+  const address = document.getElementById('address')
+  const lat = document.getElementById('lat')
+  const lng = document.getElementById('lng')
+
+  geocoder.on('result', (e) => {
+    address.value = e.result.place_name;
+    lat.value = e.result.center[0];
+    lng.value = e.result.center[1];
+  })
+
+  map.addControl(new mapboxgl.NavigationControl())
+
+  if (navigator.geolocation) {
+    // Get current position
+    // The permissions dialog will pop up
+    navigator.geolocation.getCurrentPosition(function (position) {
+      // Create an object to match Mapbox's Lat-Lng array format
+      const center = [
+        position.coords.longitude,
+        position.coords.latitude
+      ];
+
+      map.setZoom(12).setCenter(center)
+
+      new mapboxgl.Marker({ color: "red" })
+        .setLngLat(center)
+        .setPopup(new mapboxgl.Popup().setHTML("<h3>You are here</h3>"))
+        .addTo(map);
+    })
+  }
+</script>

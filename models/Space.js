@@ -1,8 +1,7 @@
 const {Schema,model} = require('Mongoose')
 const spaceSchema = new Schema({
   location:{
-      adress: String,
-      coordinates:[Number]
+      adress: String
       },
   dimensions: {
     type:String, 
@@ -15,9 +14,10 @@ const spaceSchema = new Schema({
       enum: ["ALL DAY", "SPECIFIC HOURS"]
     }, 
     interval:[Number] //En formato de 24 hrs  Ej: [08, 20]
-  }, {
+  }
+},{
     timestamps:true
   }
-})
-
+)
+spaceSchema.index({location: '2dsphere'})
 module.exports = model('Space', spaceSchema)
