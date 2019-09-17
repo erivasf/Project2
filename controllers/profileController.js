@@ -7,11 +7,10 @@ exports.createProfile = (req, res) =>{
 }
 
 exports.postProfile = async (req,res) =>{
-  const {name} = req.body
+  const {name, plateNumber, model, dimensions} = req.body
   const {url: img} = req.file
   const { profile: profileId} = await User.findById(req.user.id)
   await Profile.findByIdAndUpdate(profileId, {name,img})
-  const {plateNumber, model, dimensions} = req.body
   const car = await Car.create({plateNumber,model,dimensions})
 
 }

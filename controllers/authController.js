@@ -35,8 +35,8 @@ exports.signup = async (req, res) => {
     from: `Park It <${process.env.EMAIL}>`,
     to: email,
     subject: 'Confirm your email address',
-    text: `Confirma tu correo en: http://localhost:3001/auth/confirm/${token}`,
-    html:`<p>Confirma tu correo en http://localhost:3001/auth/confirm/${token}</p>`
+    text: `Confirma tu correo en: ${req.headers.origin}/auth/confirm/${token}`,
+    html:`<p>Confirma tu correo en ${req.headers.origin}/auth/confirm/${token}</p>`
   })
   .then(info => console.log('Email sent success'))
   .catch(error => console.log(error))
