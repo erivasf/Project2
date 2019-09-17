@@ -56,8 +56,15 @@ exports.loginForm = (req, res) => {
   res.render('auth/login')
 }
 
-exports.login = (req, res) => {
-  res.redirect('/profile')
+exports.login = async (req, res) => {
+  const {_id: id} = req.user
+  const user = await User.findById(id)
+  console.log(user)
+  if(user.profileStatus === 'Incomplete Profile'){
+    res.redirect('/create-profile')
+  }else{
+    res.redirect('/')
+  }
 }
 
 exports.logout = (req, res) => {

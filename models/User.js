@@ -34,9 +34,8 @@ const userSchema = new Schema({
   car: {
     ref: 'Car', 
     type: Schema.Types.ObjectId
-  }
-},{
-  profileComplete: {
+  },
+  profileStatus: {
     type: String, 
     enum:['Complete Profile', 'Incomplete Profile'], 
     default: 'Incomplete Profile'
