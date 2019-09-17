@@ -1,8 +1,13 @@
 const {Schema,model} = require('Mongoose')
 const spaceSchema = new Schema({
+  address:String,
   location:{
-      adress: String
+      type: {
+        type:String,
+        default:'Point'
       },
+      coordinates:[number]
+  },
   dimensions: {
     type:String, 
     required: true,
