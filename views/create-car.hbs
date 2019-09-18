@@ -1,0 +1,47 @@
+
+  <div class="container">
+  <form action="/create-car" method="POST" enctype="multipart/form-data">
+<div id="want-form">
+  <h2 class="title">Submit your car</h2>
+  <div class="field">
+    <label class="label">Plate Number</label>
+    <div class="control">
+      <input class="input" type="text" name="plateNumber" placeholder="Example: 754Y6V">
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Model</label>
+    <div class="control">
+      <input class="input" type="text" name="model" placeholder="Example: Nissan Versa">
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Color</label>
+    <div class="control">
+      <input class="input" type="text" name="color" placeholder="Example: black">
+    </div>
+  </div>
+  <div class="field">
+    <label class="label">Dimensions</label>
+    <div class="control">
+      <label class="radio">
+        <input type="radio" value="S" name="dimensionsW"> Small
+      </label>
+      <label class="radio">
+        <input type="radio" value="M" name="dimensionsW"> Medium
+      </label>
+      <label class="radio">
+        <input type="radio" value="L" name="dimensionsW"> Large
+      </label>
+    </div>
+  </div>
+    <div class="field">
+      <p class="control">
+        <button class="button is-primary">
+          Submit
+        </button>
+      </p>
+    </div>
+</div>
+</form>
+</div>

@@ -1,5 +1,9 @@
 const {Schema, model} = require('Mongoose')
 const carSchema = new Schema({
+  color: {
+    type: String, 
+    required: true
+  },
   plateNumber: {
     type: String,
     required: true

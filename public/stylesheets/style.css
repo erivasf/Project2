@@ -4,10 +4,11 @@ body {
 
 .hero {
   background-image: url("../images/parking1.jpg");
-  background-size: cover; }
+  background-size: cover;
+  min-height: calc(100vh - 75px); }
 
-#have-form, #want-form {
-  display: none; }
+.navbar {
+  height: 75px; }
 
 #hours {
   display: none; }

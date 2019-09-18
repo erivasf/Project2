@@ -218,7 +218,6 @@
   });
 
   const geocoder = new MapboxGeocoder({ accessToken:mapboxgl.accessToken}, 'top-left')
- {{!-- map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken }), 'top-left') --}}
 
   document.getElementById("search").appendChild(geocoder.onAdd(map))
   const address = document.getElementById('address')

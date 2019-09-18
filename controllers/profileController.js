@@ -15,7 +15,7 @@ exports.postProfile = async (req, res) => {
   console.log(user)
   // const {profile: profileId} = await User.findById(id)
 
-  const {name, plateNumber,model,lng,lat,dimensionsW,dimensionsH,address} = req.body
+  const {name, plateNumber,model, color, lng,lat,dimensionsW,dimensionsH,address} = req.body
   const {url: img} = req.file
 
   await Profile.findByIdAndUpdate(user.profile, {name,img})
@@ -62,6 +62,28 @@ exports.editProfile = async (req, res) => {
   const { profile: profileId} = await User.findById(req.user.id)
   await Profile.findByIdAndUpdate(profileId, {name,img})
   res.redirect('/profile')
+}
+
+exports.createCar = async (req, res) => {
+  res.render('create-car')
+}
+
+exports.createBoth = async (req, res) => {
+  res.render('create-both')
+}
+
+exports.postCar = async (req, res) => {
+ const {plateNumber,model, color, dimensionsW} = req.body
+ const car = await Car.create({plateNumber,model,color,dimensionsW})
+ res.redirect('/')
+}
+
+exports.postBoth = async (req, res) => {
+  const {name,plateNumber,model,color,lng,lat,dimensionsW,dimensionsH, address} = req.body
+  const car = await Car.create({plateNumber,model,color,dimensionsW})
+  const space = await Space.create({adress,lat,lng,dimensionsH,availability})
+  res.redirect('/')
+  
 }
 
 
