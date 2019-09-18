@@ -3,7 +3,7 @@
     <h1 class="title">Complete your register</h1>
     <img src="{{profile.img}}" alt="{{email}}" width="200" />
     <div class="box">
-      <form action="/profile/edit" method="POST" enctype="multipart/form-data">
+      <form action="/create-profile" method="POST" enctype="multipart/form-data">
         <label for="profile-picture" class="label">Profile Picture</label>
         <div class="file has-name is-fullwidth">
           <label class="file-label">
@@ -57,13 +57,13 @@
                 <label class="label">Dimensions</label>
                 <div class="control">
                   <label class="radio">
-                    <input type="radio" name="dimensions-want"> Small
+                    <input type="radio" value="S" name="dimensionsW"> Small
                   </label>
                   <label class="radio">
-                      <input type="radio" name="dimensions-want"> Medium
+                      <input type="radio" value="M" name="dimensionsW"> Medium
                   </label>
                   <label class="radio">
-                    <input type="radio" name="dimensions-want"> Large
+                    <input type="radio" value="L" name="dimensionsW"> Large
                   </label>
                 </div>
               </div>
@@ -98,13 +98,13 @@
             <label class="label">Dimensions</label>
             <div class="control">
               <label class="radio">
-                <input type="radio" name="dimensions-have"> Small
+                <input type="radio" value="S" name="dimensionsH"> Small
               </label>
               <label class="radio">
-                <input type="radio" name="dimensions-have"> Medium
+                <input type="radio" value="M" name="dimensionsH"> Medium
               </label>
               <label class="radio">
-                <input type="radio" name="dimensions-have"> Large
+                <input type="radio" value="L" name="dimensionsH"> Large
               </label>
             </div>
           </div>

@@ -6,7 +6,7 @@ const spaceSchema = new Schema({
         type:String,
         default:'Point'
       },
-      coordinates:[number]
+      coordinates:[Number]
   },
   dimensions: {
     type:String, 

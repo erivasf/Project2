@@ -8,19 +8,44 @@ exports.createProfile = (req, res) =>{
 }
 
 exports.postProfile = async (req,res) =>{
-  const {name, plateNumber, model, dimensions} = req.body
+  console.log(req.body)
+  const {name, plateNumber, model, lng, lat, dimensionsW, dimensionsH, address} = req.body
   const {url: img} = req.file
-  const { profile: profileId} = await User.findById(req.user.id)
+  console.log("UUUSEEEEERRRRRR" + req.user)
+  const {_id: id} = req.user
+  console.log(id)
+  const user = await User.findById(id)
+  console.log("UUUSEEEEERRRRRR Profile")
+  console.log(use.profile)
+  const {profile: profileId} = await User.findById(id)
   await Profile.findByIdAndUpdate(profileId, {name,img})
-  const car = await Car.create({
+
+  const car =  Car.create({
     plateNumber,
     model,
-    dimensions:dimensions-want
+    dimensions:dimensionsW
   })
-  const space = await Space.create({
+  .then((result) => {
+    console.log('Car created')
+    user.car = car.id
+  }).catch((err) => {
+    console.log(err)
+  });
+
+  const space = Space.create({
     address,
-    
+    location: {
+      type: "Point",
+      coordinates : [lng, lat]
+    },
+    dimensions:dimensionsH
   })
+  .then((result) => {
+    console.log('Car created')
+    user.space = space.id
+  }).catch((err) => {
+    console.log(err)
+  });
 
 }
 
