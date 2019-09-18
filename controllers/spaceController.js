@@ -6,10 +6,14 @@ exports.createSpace = (req, res) => {
 }
 
 exports.postSpace = async (req, res, next) => {
-  // const user = await User.findById(req.user.id)
-  // console.log(user)
-  console.log(req.body)
+  const user = await User.findById(req.user.id)
   const {address,lat,lng,dimensionsH,availability} = req.body
+  let startHour = 00
+  let endHour = 24
+  if(availability == 'SPECIFIC HOURS'){
+    startHour = req.body.startHour
+    endHour = req.body.endHour
+  }
   const space = await Space.create({
     address,
     location: {
@@ -19,9 +23,10 @@ exports.postSpace = async (req, res, next) => {
     dimensions:dimensionsH,
     availability:{
       period:availability,
-      interval:[00,23]
+      interval:[startHour,endHour]
     }
   })
-  console.log(space)
-  res.send('ok')
+  user.space = space.id
+  user.save()
+  res.redirect('/profile')
 }
