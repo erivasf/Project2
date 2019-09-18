@@ -5,7 +5,6 @@ body{
 .hero{
   background-image: url('../images/parking1.jpg');
   background-size:cover;
-  opacity:0.5;
 }
 #have-form, #want-form{
   display: none;
@@ -13,4 +12,9 @@ body{
 
 #hours{
   display:none;
+}
+.card{
+  margin-top:20px;
+  padding: 30px 20px;
+  border-radius: 10px;
 }

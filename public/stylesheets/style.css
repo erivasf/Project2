@@ -4,13 +4,17 @@ body {
 
 .hero {
   background-image: url("../images/parking1.jpg");
-  background-size: cover;
-  opacity: 0.5; }
+  background-size: cover; }
 
 #have-form, #want-form {
   display: none; }
 
 #hours {
   display: none; }
+
+.card {
+  margin-top: 20px;
+  padding: 30px 20px;
+  border-radius: 10px; }
 
 /*# sourceMappingURL=style.css.map */
