@@ -3,9 +3,13 @@ body {
   padding: 0; }
 
 .hero {
-  background-image: url("../images/parking1.jpg");
+  background-image: url("../images/parking2.jpg");
   background-size: cover;
-  min-height: calc(100vh - 75px); }
+  background-position: center; }
+
+.bg-color {
+  opacity: 0.7;
+  background-color: #545499; }
 
 .navbar {
   height: 75px; }
@@ -16,12 +20,18 @@ body {
 .card {
   margin-top: 20px;
   padding: 30px 20px;
-  border-radius: 10px; }
+  border-radius: 10px;
+  height: 450px;
+  overflow-y: auto; }
 
 #search {
   width: 50%;
   border: 1px solid #d6d6d6;
   border-radius: 5px;
   margin-bottom: 20px; }
+
+/*HOME*/
+#map-home {
+  margin: 7% 0; }
 
 /*# sourceMappingURL=style.css.map */

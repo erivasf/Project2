@@ -1,12 +1,88 @@
-<section class="hero is-primary is-large">
+<section class="hero is-primary is-medium">
+  <div class="bg-color">
   <div class="hero-body">
     <div class="container">
       <h1 class="title" style="font-size: 100px">
-        Parkit
+        ParkIt
       </h1>
       <h2 class="subtitle" style="font-size: 30px">
-        Encuentra un lugar donde quiera que vayas.
+        Find a parking spot wherever you go
       </h2>
     </div>
   </div>
+  </div>
 </section>
+
+{{!-- Map --}}
+<section id="map-home">
+  <div class="container">
+    <div class="columns">
+      <div class="column is-three-fifths">
+        <div id="map" style="width: 100%; height: 500px"></div>
+      </div>
+      <div class="column is-two-fifths">
+        <div class="card">
+          <div class="card-content">
+            <h4 class="title is-4">Find your parking spot</h4>
+            {{#each spaces as |space|}}
+            <div class="space">
+              <p>{{space.address}}</p>
+              <p>{{space.availability.period}}</p>
+              <a class="button is-small is-primary" onclick="spotLocation({{space.location}})">Spot it</a>
+              <hr>
+            </div>
+            {{/each}}
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  mapboxgl.accessToken = "pk.eyJ1IjoibmVyd2VuMjI5MSIsImEiOiJjazBkeG9sN3MwYzRhM3FybmdpNGR6eWJnIn0.CLSMkNf7rWHwBo-jX7eNGw";
+  const map = new mapboxgl.Map({
+    container: "map",
+    style: "mapbox://styles/mapbox/streets-v10"
+  });
+
+  map.addControl(new mapboxgl.NavigationControl());
+
+  // Try to get a geolocation object from the web browser
+  if (navigator.geolocation) {
+    navigator.geolocation.getCurrentPosition(function (position) {
+      const center = [
+        position.coords.longitude,
+        position.coords.latitude
+      ];
+
+      map.setZoom(12).setCenter(center);
+
+      new mapboxgl.Marker({ color:"red" })
+        .setLngLat(center)
+        .setPopup(new mapboxgl.Popup().setHTML("<p>Usted está aquí</p>"))
+        .addTo(map)
+    });
+  }
+
+  let locations = [];
+  let names = [];
+  {{#each spaces as |space|}}
+    locations.push({{{space.location}}})
+    names.push("{{space.name}}");
+  {{/each}}
+  locations.forEach((space, i) => {
+    let [lng,lat] = space.coordinates
+    let space_position = [lng, lat];
+    let popup = new mapboxgl.Popup().setText(names[i]);
+    let marker = new mapboxgl.Marker().setLngLat(space_position).setPopup(popup).addTo(map);
+  });
+  function spotLocation(location){
+    const lng = location.coordinates[0]
+    const lat = location.coordinates[1]
+    map.flyTo({
+      center: [lng,lat],
+      zoom:15
+    })
+  }
+</script>

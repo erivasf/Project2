@@ -5,10 +5,12 @@ const catchErrors = require('../middlewares/catchErrors')
 const isLoggedIn = require('../middlewares/isLoggedIn')
 const uploadCloud = require('../config/cloudinary')
 const User = require('../models/User')
+const Space = require('../models/Space')
 
 /* GET home page */
-router.get('/', (req, res, next) => {
-  res.render('index')
+router.get('/', async (req, res, next) => {
+  const spaces = await Space.find()
+  res.render('index', {spaces})
 })
 
 router.get('/profile', isLoggedIn('/auth/login'), catchErrors(showProfile))
