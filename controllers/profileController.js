@@ -73,16 +73,27 @@ exports.createBoth = async (req, res) => {
 }
 
 exports.postCar = async (req, res) => {
+  console.log('EEEEEEEEEE' + req.body)
+  console.log(req.body)
  const {plateNumber,model, color, dimensionsW} = req.body
- const car = await Car.create({plateNumber,model,color,dimensionsW})
+ console.log('AAAAAAAAAAA'+color)
+ const car = await Car.create({plateNumber,model,color,dimensions:dimensionsW})
+ console.log("CARRRRRRRRR: "+car)
  res.redirect('/')
 }
 
 exports.postBoth = async (req, res) => {
   const {name,plateNumber,model,color,lng,lat,dimensionsW,dimensionsH, address} = req.body
   const car = await Car.create({plateNumber,model,color,dimensionsW})
-  const space = await Space.create({adress,lat,lng,dimensionsH,availability})
+  const space = await Space.create({adress,lat,lng,dimensionsH:dimensions,availability})
   res.redirect('/')
+   .then((res) => {
+       console.log('New space added!')
+     })
+     .catch((err) => {
+       console.log(err)
+     })
+
   
 }
 
