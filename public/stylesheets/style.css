@@ -13,6 +13,9 @@ body {
 #hours {
   display: none; }
 
+#profile-edit {
+  display: none; }
+
 .card {
   margin-top: 20px;
   padding: 30px 20px;

@@ -4,7 +4,61 @@
     <img src="{{profile.img}}" alt="" width="200" />
     <p>{{profile.name}}</p>
     <p>{{user.email}}</p>
-    <a href="/create-car" class="button is-primary">Searching a space</a>
+    <a href="/create-car" class="button is-primary">Need a space</a>
     <a href="/create-space" class="button is-primary">Have a space</a>
+    <a href="/create-both" class="button is-primary">Both</a>
   </div>
+  <hr>
+  <div>
+  <h2>Would you like to change something?</h2>
+  <a class="button is-primary" onclick="showForm()">Edite profile</a>
+  </div>
+  <div id="profile-edit">
+    <h3>Update your info</h3>
+    <div class="box">
+      <form action="/profile" method="POST" enctype="multipart/form-data">
+        <label for="profile-picture" class="label">Profile Picture</label>
+        <div class="file has-name is-fullwidth">
+          <label class="file-label">
+            <input class="file-input" type="file" name="photo">
+            <span class="file-cta">
+              <span class="file-icon">
+                <i class="fas fa-upload"></i>
+              </span>
+              <span class="file-label">
+                Choose a file…
+              </span>
+            </span>
+            <span class="file-name">
+              ...
+            </span>
+          </label>
+        </div>
+        <div class="field">
+          <label for="name" class="label">Username</label>
+          <p class="control has-icons-left has-icons-right">
+            <input class="input" type="text" name="name" placeholder="Enter name">
+            <span class="icon is-small is-left">
+              <i class="fas fa-user"></i>
+            </span>
+            <span class="icon is-small is-right">
+              <i class="fas fa-check"></i>
+            </span>
+          </p>
+        </div>
+          <div class="field">
+            <p class="control">
+              <button class="button is-primary" type="submit">
+                Update
+              </button>
+            </p>
+          </div>
+        </form>
+  </div>
+    </div>
 </section>
+<script>
+  function showForm(){
+    document.getElementById('profile-edit').style.display='block'
+  }
+</script>
