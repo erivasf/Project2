@@ -1,4 +1,4 @@
-const {Schema,model} = require('Mongoose')
+const {Schema,model} = require('mongoose')
 const spaceSchema = new Schema({
   address:String,
   location:{

@@ -18,15 +18,15 @@
           </div>
         </div>
         <div class="field">
-          <label class="label">Lat</label>
-          <div class="control">
-            <input class="input" type="text" name="lat" id="lat" readonly>
-          </div>
-        </div>
-        <div class="field">
           <label class="label">Lng</label>
           <div class="control">
             <input class="input" type="text" name="lng" id="lng" readonly>
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Lat</label>
+          <div class="control">
+            <input class="input" type="text" name="lat" id="lat" readonly>
           </div>
         </div>
         {{!-- Dimensions --}}
@@ -62,31 +62,31 @@
             <div class="select">
               <select class="is-hovered">
                 <option>Start</option>
-                <option>00:00</option vlaue='0'>
-                <option>01:00</option vlaue='1'>
-                <option>02:00</option vlaue='2'>
-                <option>03:00</option vlaue='3'>
-                <option>04:00</option vlaue='4'>
-                <option>05:00</option vlaue='5'>
-                <option>06:00</option vlaue='6'>
-                <option>07:00</option vlaue='7'>
-                <option>08:00</option vlaue='8'>
-                <option>09:00</option vlaue='9'>
-                <option>10:00</option vlaue='10'>
-                <option>11:00</option vlaue='11'>
-                <option>12:00</option vlaue='12'>
-                <option>13:00</option vlaue='13'>
-                <option>14:00</option vlaue='14'>
-                <option>15:00</option vlaue='15'>
-                <option>16:00</option vlaue='16'>
-                <option>17:00</option vlaue='17'>
-                <option>18:00</option vlaue='18'>
-                <option>19:00</option vlaue='19'>
-                <option>20:00</option vlaue='20'>
-                <option>21:00</option vlaue='21'>
-                <option>22:00</option vlaue='22'>
-                <option>23:00</option vlaue='23'>
-                <option>24:00</option vlaue='24'>
+                <option value="0">00:00</option>
+                <option value="1">01:00</option>
+                <option value="2">02:00</option>
+                <option value="3">03:00</option>
+                <option value="4">04:00</option>
+                <option value="5">05:00</option>
+                <option value="6">06:00</option>
+                <option value="7">07:00</option>
+                <option value="8">08:00</option>
+                <option value="9">09:00</option>
+                <option value="10">10:00</option>
+                <option value="11">11:00</option>
+                <option value="12">12:00</option>
+                <option value="13">13:00</option>
+                <option value="14">14:00</option>
+                <option value="15">15:00</option>
+                <option value="16">16:00</option>
+                <option value="17">17:00</option>
+                <option value="18">18:00</option>
+                <option value="19">19:00</option>
+                <option value="20">20:00</option>
+                <option value="21">21:00</option>
+                <option value="22">22:00</option>
+                <option value="23">23:00</option>
+                <option value="24">24:00</option>
               </select>
             </div>
           </div>
@@ -94,31 +94,31 @@
             <div class="select">
             <select class="is-hovered">
               <option>End</option>
-              <option>00:00</option vlaue='0'>
-              <option>01:00</option vlaue='1'>
-              <option>02:00</option vlaue='2'>
-              <option>03:00</option vlaue='3'>
-              <option>04:00</option vlaue='4'>
-              <option>05:00</option vlaue='5'>
-              <option>06:00</option vlaue='6'>
-              <option>07:00</option vlaue='7'>
-              <option>08:00</option vlaue='8'>
-              <option>09:00</option vlaue='9'>
-              <option>10:00</option vlaue='10'>
-              <option>11:00</option vlaue='11'>
-              <option>12:00</option vlaue='12'>
-              <option>13:00</option vlaue='13'>
-              <option>14:00</option vlaue='14'>
-              <option>15:00</option vlaue='15'>
-              <option>16:00</option vlaue='16'>
-              <option>17:00</option vlaue='17'>
-              <option>18:00</option vlaue='18'>
-              <option>19:00</option vlaue='19'>
-              <option>20:00</option vlaue='20'>
-              <option>21:00</option vlaue='21'>
-              <option>22:00</option vlaue='22'>
-              <option>23:00</option vlaue='23'>
-              <option>24:00</option vlaue='24'>
+              <option value="0">00:00</option>
+                <option value="1">01:00</option>
+                <option value="2">02:00</option>
+                <option value="3">03:00</option>
+                <option value="4">04:00</option>
+                <option value="5">05:00</option>
+                <option value="6">06:00</option>
+                <option value="7">07:00</option>
+                <option value="8">08:00</option>
+                <option value="9">09:00</option>
+                <option value="10">10:00</option>
+                <option value="11">11:00</option>
+                <option value="12">12:00</option>
+                <option value="13">13:00</option>
+                <option value="14">14:00</option>
+                <option value="15">15:00</option>
+                <option value="16">16:00</option>
+                <option value="17">17:00</option>
+                <option value="18">18:00</option>
+                <option value="19">19:00</option>
+                <option value="20">20:00</option>
+                <option value="21">21:00</option>
+                <option value="22">22:00</option>
+                <option value="23">23:00</option>
+                <option value="24">24:00</option>
               </select>
             </div>
           </div>
@@ -126,7 +126,7 @@
         {{!-- Button --}}
         <div class="field">
           <p class="control">
-            <button class="button is-primary">
+            <button type="submit" class="button is-primary">
               Create Space
             </button>
           </p>
@@ -154,8 +154,8 @@
 
   geocoder.on('result', (e) => {
     address.value = e.result.place_name;
-    lat.value = e.result.center[0];
-    lng.value = e.result.center[1];
+    lng.value = e.result.center[0];
+    lat.value = e.result.center[1];
   })
 
   map.addControl(new mapboxgl.NavigationControl())

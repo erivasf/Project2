@@ -19,6 +19,6 @@ router.post('/create-car', isLoggedIn('/auth/login'), catchErrors(postCar))
 router.get('/create-both', isLoggedIn('/auth/login'), catchErrors(createBoth))
 router.post('/create-both', isLoggedIn('/auth/login'), catchErrors(postBoth))
 router.get('/create-space',createSpace)
-router.post('/create-space',postSpace)
+router.post('/create-space', catchErrors(postSpace))
 
 module.exports = router
