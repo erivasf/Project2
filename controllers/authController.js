@@ -34,8 +34,8 @@ exports.signup = async (req, res) => {
   transporter.sendMail({
     from: `Park It <${process.env.EMAIL}>`,
     to: email,
-    subject: 'Confirm your email address',
-    text: `Confirma tu correo en: ${req.headers.origin}/auth/confirm/${token}`,
+    subject: 'PARK IT email confirmation',
+    text: `Confirm your email adress ${req.headers.origin}/auth/confirm/${token}`,
     html:`<p>Confirma tu correo en ${req.headers.origin}/auth/confirm/${token}</p>`
   })
   .then(info => console.log('Email sent success'))

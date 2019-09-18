@@ -3,7 +3,7 @@
     <h1 class="title">Complete your register</h1>
     <img src="{{profile.img}}" alt="{{email}}" width="200" />
     <div class="box">
-      <form action="/profile/edit" method="POST" enctype="multipart/form-data">
+      <form action="/create-profile" method="POST" enctype="multipart/form-data">
         <label for="profile-picture" class="label">Profile Picture</label>
         <div class="file has-name is-fullwidth">
           <label class="file-label">
@@ -24,7 +24,7 @@
         <div class="field">
           <label for="name" class="label">Username</label>
           <p class="control has-icons-left has-icons-right">
-            <input class="input" type="text" name="name" placeholder="Enter name">
+            <input class="input" type="text" name="name" placeholder="Nombre de Usuario">
             <span class="icon is-small is-left">
               <i class="fas fa-user"></i>
             </span>
@@ -57,13 +57,13 @@
                 <label class="label">Dimensions</label>
                 <div class="control">
                   <label class="radio">
-                    <input type="radio" name="dimensions-want"> Small
+                    <input type="radio" name="dimensions"> Small
                   </label>
                   <label class="radio">
-                      <input type="radio" name="dimensions-want"> Medium
+                      <input type="radio" name="dimensions"> Medium
                   </label>
                   <label class="radio">
-                    <input type="radio" name="dimensions-want"> Large
+                    <input type="radio" name="dimensions"> Large
                   </label>
                 </div>
               </div>
@@ -83,7 +83,7 @@
           <div class="field">
             <label class="label">Adress</label>
             <div class="control">
-              <input id="address" class="input" type="text" name="address" placeholder="Example: Tonalá 10, Roma Norte, Ciudad de México">
+              <input id="address" class="input" type="text" name="plateNumber" placeholder="Example: Tonalá 10, Roma Norte, Ciudad de México">
             </div>
             <label class="label">Lat</label>
             <div class="control">
@@ -95,103 +95,29 @@
             </div>
           </div>
           <div class="field">
+            <label class="label">Model</label>
+            <div class="control">
+              <input class="input" type="text" name="model" placeholder="Example: Nissan Versa">
+            </div>
+          </div>
+          <div class="field">
             <label class="label">Dimensions</label>
             <div class="control">
               <label class="radio">
-                <input type="radio" name="dimensions-have"> Small
+                <input type="radio" name="dimensions"> Small
               </label>
-                <label class="radio">
-                  <input type="radio" name="dimensions-have"> Medium
-                </label>
               <label class="radio">
-                <input type="radio" name="dimensions-have"> Large
+                <input type="radio" name="dimensions"> Medium
+              </label>
+              <label class="radio">
+                <input type="radio" name="dimensions"> Large
               </label>
             </div>
           </div>
-            <div class="field">
-              <label class="label">Availability</label>
-              <div class="control">
-                <label class="radio">
-                  <input type="radio" name="hours" onclick="hideHours()"> All day
-                </label>
-                <label class="radio">
-                  <input type="radio" name="hours" onclick="displayHours()"> Specific hours
-                </label>
-              </div>
-              </div>
-              </div>
-                  <div id='hours'>
-                  <div class="control">
-                    <div class="select">
-                      <select class="is-hovered">
-                        <option>Start</option>
-                        <option>00:00</option vlaue='0'>
-                        <option>01:00</option vlaue='1'>
-                        <option>02:00</option vlaue='2'>
-                        <option>03:00</option vlaue='3'>
-                        <option>04:00</option vlaue='4'>
-                        <option>05:00</option vlaue='5'>
-                        <option>06:00</option vlaue='6'>
-                        <option>07:00</option vlaue='7'>
-                        <option>08:00</option vlaue='8'>
-                        <option>09:00</option vlaue='9'>
-                        <option>10:00</option vlaue='10'>
-                        <option>11:00</option vlaue='11'>
-                        <option>12:00</option vlaue='12'>
-                        <option>13:00</option vlaue='13'>
-                        <option>14:00</option vlaue='14'>
-                        <option>15:00</option vlaue='15'>
-                        <option>16:00</option vlaue='16'>
-                        <option>17:00</option vlaue='17'>
-                        <option>18:00</option vlaue='18'>
-                        <option>19:00</option vlaue='19'>
-                        <option>20:00</option vlaue='20'>
-                        <option>21:00</option vlaue='21'>
-                        <option>22:00</option vlaue='22'>
-                        <option>23:00</option vlaue='23'>
-                        <option>24:00</option vlaue='24'>
-                      </select>
-                    </div>
-                  </div>
-                  <div class="control">
-                    <div class="select">
-                    <select class="is-hovered">
-                      <option>End</option>
-                      <option>00:00</option vlaue='0'>
-                      <option>01:00</option vlaue='1'>
-                      <option>02:00</option vlaue='2'>
-                      <option>03:00</option vlaue='3'>
-                      <option>04:00</option vlaue='4'>
-                      <option>05:00</option vlaue='5'>
-                      <option>06:00</option vlaue='6'>
-                      <option>07:00</option vlaue='7'>
-                      <option>08:00</option vlaue='8'>
-                      <option>09:00</option vlaue='9'>
-                      <option>10:00</option vlaue='10'>
-                      <option>11:00</option vlaue='11'>
-                      <option>12:00</option vlaue='12'>
-                      <option>13:00</option vlaue='13'>
-                      <option>14:00</option vlaue='14'>
-                      <option>15:00</option vlaue='15'>
-                      <option>16:00</option vlaue='16'>
-                      <option>17:00</option vlaue='17'>
-                      <option>18:00</option vlaue='18'>
-                      <option>19:00</option vlaue='19'>
-                      <option>20:00</option vlaue='20'>
-                      <option>21:00</option vlaue='21'>
-                      <option>22:00</option vlaue='22'>
-                      <option>23:00</option vlaue='23'>
-                      <option>24:00</option vlaue='24'>
-                      </select>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
           <div class="field">
             <p class="control">
               <button class="button is-primary">
-                Create
+                Update
               </button>
             </p>
           </div>
@@ -263,12 +189,6 @@
   function displayBoth() {
       document.getElementById('want-form').style.display='block'
       document.getElementById('have-form').style.display='block'
-  }
-  function displayHours(){
-    document.getElementById('hours').style.display='block'
-  }
-  function hideHours(){
-    document.getElementById('hours').style.display='none'
   }
 
 </script>
