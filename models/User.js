@@ -40,6 +40,10 @@ const userSchema = new Schema({
     enum:['Complete Profile', 'Incomplete Profile'], 
     default: 'Incomplete Profile'
   }
+  , 
+  rating:{
+    type: [Number]
+  }
 },
  {
   timestamps: true

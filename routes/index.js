@@ -11,7 +11,7 @@ router.get('/', (req, res, next) => {
   res.render('index')
 })
 
-router.get('/profile', isLoggedIn('/auth/login'), catchErrors(showProfile))
+router.get('/profile/:id', isLoggedIn('/auth/login'), catchErrors(showProfile))
 router.get('/create-profile',createProfile)
 router.post('/create-profile',uploadCloud.single('photo'),catchErrors(postProfile))
 

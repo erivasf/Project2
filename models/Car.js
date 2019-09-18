@@ -11,7 +11,7 @@ const carSchema = new Schema({
   dimensions: {
       type: String,
       enum: ['S', 'M', 'L'], 
-      required: true,
+      required: true
   }
 },
   {

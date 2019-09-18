@@ -38,6 +38,7 @@
           <a id = "have" class="button is-primary" onclick="displayHave()">I have a space</a>
           <a id = "both" class="button is-primary" onclick="displayBoth()">Both</a>
         </div>
+        {{!-- DIVISIÓN --}}
         <section id="Formularies">
         <div id="want-form">
           <h2 class="title">Looking for a space</h2>
@@ -251,7 +252,6 @@
     })
   }
   // Funcionalidad de los botones
-
   function displayWant(){
     document.getElementById('want-form').style.display='block'
     document.getElementById('have-form').style.display ='none'

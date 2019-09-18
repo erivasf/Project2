@@ -3,24 +3,24 @@ const Profile = require('../models/Profile')
 const Car = require('../models/Car');
 const Space = require('../models/Space')
 
-exports.createProfile = (req, res) =>{
-  res.render('create-profile');
+exports.createProfile = async (req, res) =>{
+  const {id} = req.params
+  const user = await User.findById(id)
+  res.render('create-profile', {user});
 }
 
-exports.postProfile = async (req,res) =>{
-  console.log(req.body)
-  const {name, plateNumber, model, lng, lat, dimensionsW, dimensionsH, address} = req.body
-  const {url: img} = req.file
-  console.log("UUUSEEEEERRRRRR" + req.user)
-  const {_id: id} = req.user
-  console.log(id)
+exports.postProfile = async (req, res) => {
+  const id = req.user._id
   const user = await User.findById(id)
-  console.log("UUUSEEEEERRRRRR Profile")
-  console.log(use.profile)
-  const {profile: profileId} = await User.findById(id)
-  await Profile.findByIdAndUpdate(profileId, {name,img})
+  console.log(user)
+  // const {profile: profileId} = await User.findById(id)
 
-  const car =  Car.create({
+  const {name, plateNumber,model,lng,lat,dimensionsW,dimensionsH,address} = req.body
+  const {url: img} = req.file
+
+  await Profile.findByIdAndUpdate(user.profile, {name,img})
+
+  const car =  await Car.create({
     plateNumber,
     model,
     dimensions:dimensionsW
@@ -32,7 +32,7 @@ exports.postProfile = async (req,res) =>{
     console.log(err)
   });
 
-  const space = Space.create({
+  const space = await Space.create({
     address,
     location: {
       type: "Point",
@@ -48,6 +48,7 @@ exports.postProfile = async (req,res) =>{
   });
 
 }
+
 
 exports.showProfile = async (req, res) => {
   const user = await User.findById(req.user.id).populate('profile')
