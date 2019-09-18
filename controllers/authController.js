@@ -58,10 +58,10 @@ exports.loginForm = (req, res) => {
 
 exports.login = async (req, res) => {
   const {_id: id} = req.user
-  const user = await User.findById(id)
+  const user = await User.findById(id).populate('profile')
   console.log(user)
   if(user.profileStatus === 'Incomplete Profile'){
-    res.redirect('/create-profile')
+    res.render('profile', user)
   }else{
     res.redirect('/')
   }
