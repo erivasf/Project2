@@ -150,8 +150,13 @@
     style: "mapbox://styles/mapbox/streets-v10",
   });
 
-  const geocoder = new MapboxGeocoder({ accessToken:mapboxgl.accessToken}, 'top-left')
- {{!-- map.addControl(new MapboxGeocoder({ accessToken: mapboxgl.accessToken }), 'top-left') --}}
+  const geocoder = new MapboxGeocoder({
+    accessToken:mapboxgl.accessToken,
+    marker:{
+      color:'orange'
+    },
+    mapboxgl: mapboxgl
+  })
 
   document.getElementById("search").appendChild(geocoder.onAdd(map))
   const address = document.getElementById('address')

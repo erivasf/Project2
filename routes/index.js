@@ -9,7 +9,7 @@ const User = require('../models/User')
 const Space = require('../models/Space')
 
 /* GET home page */
-router.get('/', async (req, res, next) => {
+router.get('/', isLoggedIn('/auth/login'),async (req, res, next) => {
   const spaces = await Space.find()
   res.render('index', {spaces})
 })
