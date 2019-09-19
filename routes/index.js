@@ -20,8 +20,8 @@ router.get('/create-car', isLoggedIn('/auth/login'), catchErrors(createCar))
 router.post('/create-car', isLoggedIn('/auth/login'), catchErrors(postCar))
 router.get('/create-both', isLoggedIn('/auth/login'), catchErrors(createBoth))
 router.post('/create-both', isLoggedIn('/auth/login'), catchErrors(postBoth))
-router.get('/create-space',createSpace)
-router.post('/create-space', catchErrors(postSpace))
-router.get('/space-detail/:id', spaceDetail)
+router.get('/create-space',isLoggedIn('/auth/login'),createSpace)
+router.post('/create-space',isLoggedIn('/auth/login'), catchErrors(postSpace))
+router.get('/space-detail/:id',isLoggedIn('/auth/login'), spaceDetail)
 
 module.exports = router
