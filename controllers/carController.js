@@ -24,6 +24,21 @@ exports.postCar = async (req, res) => {
   res.redirect('/profile')
 }
 
+exports.updateCar = async (req, res)=> {
+  const {id} = req.params
+  const{plateNumber, model, color, dimensionsW} = req.body
+  await Car.findByIdAndUpdate(id, {plateNumber, model, color, dimensions:dimensionsW})
+  res.redirect('/profile')
+}
+
+exports.deleteCar = async (req, res) => {
+  const {id} = req.params
+  await Car.findByIdAndDelete(id)
+  res.redirect('/profile')
+}
+
+
+
 // exports.carPage = async (req, res, next) => {
 //   console.log(">>>>>", req.user)
 //   const user = await User.findById(req.user.id)

@@ -31,6 +31,32 @@ exports.postSpace = async (req, res, next) => {
   res.redirect('/profile')
 }
 
+exports.updateSpace = async (req, res) => {
+  const {
+    id
+  } = req.params
+  const {address,location,lng,lat,availability,dimensionsH} = req.body
+   let startHour = 00
+   let endHour = 24
+   if (availability == 'SPECIFIC HOURS') {
+     startHour = req.body.startHour
+     endHour = req.body.endHour
+   }
+  await Space.findByIdAndUpdate(id, {
+       address,
+       location: {
+           type: "Point",
+           coordinates: [lng, lat]
+         },
+         dimensions: dimensionsH,
+         availability: {
+           period: availability,
+           interval: [startHour, endHour]
+         }
+  })
+  res.redirect('/profile')
+}
+
 exports.placePage = async (req, res, next) => {
   const user = await User.findById(req.user.id)
   console.log('USER: ' + user)
@@ -65,4 +91,10 @@ exports.spaceDetail = async(req, res) =>{
   }
   let context = {space, image, size} 
   res.render('space-detail', context)
+}
+
+exports.deleteSpace = async (req, res) => {
+  const {id} = req.params
+  await Space.findByIdAndDelete(id)
+  res.redirect('/profile')
 }

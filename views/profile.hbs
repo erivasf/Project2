@@ -72,30 +72,231 @@
     <h2 class="title has-text-centered"> Your cars</h2>
       {{#each cars}}
       <div id='carCard' class="box">
-        <h3>{{this.model}}</h3>
-        <br>
-        <h3>{{this.color}}</h3>
-        <br>
-        <h3>{{this.plateNumber}}</h3>
-        <br>
-        <h3>{{this.dimensions}}</h3>
+        <label>Model:</label>
+        <h3 class="box">{{this.model}}</h3>
+        <label>Color:</label>
+        <h3 class="box">{{this.color}}</h3>
+        <label>Dimensions:</label>
+        <h3 class="box">{{this.dimensions}}</h3>
+        <div id="carButtons">
+          <button class="button is-primary" onclick="showEditCar()">Edit</button>
+          <a href="/delete-car/{{this.id}}"> <button class="button is-danger">Delete</button></a>
+        </div>
       </div>
       <br>
+      {{!-- Car Edit --}}
+      <div id="carEditModal" class="modal">
+        <div class="modal-background"></div>
+        <div class="modal-card">
+          <header class="modal-card-head">
+            <p class="modal-card-title">Edit your car</p>
+            <button class="delete" aria-label="close" onclick="closeCarModal()"></button>
+          </header>
+        <section class="modal-card-body">
+            <form action="/update-car/{{this.id}}" method="POST">
+              <div class="field">
+                <label class="label">Plate Number</label>
+                <div class="control">
+                  <input class="input" type="text" name="plateNumber" value={{this.plateNumber}}>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Model</label>
+                <div class="control">
+                  <input class="input" type="text" name="model" value={{this.model}}>
+                </div>
+              </div>
+              <div class="field">
+                <label class="label">Color</label>
+                <div class="control">
+                  <input class="input" type="text" name="color" value={{this.color}}>
+                </div>
+              </div>
+              <div class="field">
+                <label for="" class="label">Dimensions:</label>
+                <div class="cc-selector">
+                  <input id="dimensionsWS" type="radio" name="dimensionsW" value="S">
+                  <label for="S" class="smallCar labelCar">Small</label>
+                  <input id="dimensionsWS" type="radio" name="dimensionsW" value="M">
+                  <label for="M" class="mediumCar labelCar">Medium</label>
+                  <input id="dimensionsWS" type="radio" name="dimensionsW" value="L">
+                  <label for="L" class="largeCar labelCar">Large</label>
+                </div>
+              </div>
+              <div class="field">
+                <p class="control">
+                  <button class="button is-primary" type="submit">
+                    Update
+                  </button>
+                </p>
+              </div>
+          </form>
+      </section>
+        <footer class="modal-card-foot">
+        </footer>
+      </div>
+      </div>
       {{/each}}
   </div>
   <div class="container-profile column is-half" id="AllSpaces">
     <h2 class="title has-text-centered"> Your spaces</h2>
     {{#each spaces}}
     <div id='spaceCard' class="box">
-      <h3>{{this.address}}</h3>
-      <br>
-      <h3>{{this.location.coordinates}}</h3>
-      <br>
-      <h3>{{this.availability.period}}</h3>
-      <br>
-      <h3>{{this.dimensions}}</h3>
+      <label>Address:</label>
+      <h3 class="box">{{this.address}}</h3>
+      <label>Availability:</label>
+      <h3 class="box">{{this.availability.period}}</h3>
+      <label>Dimensions:</label>
+      <h3 class="box">{{this.dimensions}}</h3>
+          <div id="placeButtons">
+            <button class="button is-primary" onclick="showEditSpace()">Edit</button>
+            <a href="/delete-space/{{this.id}}"> <button class="button is-danger">Delete</button></a>
+          </div>
     </div>
     <br>
+    {{!-- Space Edit --}}
+    <div id="spaceEditModal" class="modal">
+      <div class="modal-background"></div>
+      <div class="modal-card">
+        <header class="modal-card-head">
+          <p class="modal-card-title">Edit your space</p>
+          <button class="delete" aria-label="close" onclick="closeSpaceModal()" ></button>
+        </header>
+        <section class="modal-card-body">
+          <form action="/update-space/{{this.id}}" method="POST">
+            <div>
+              <p>Search your available space location:</p>
+              <div id="search"></div>
+              <small>The location information will autocomplete</small>
+            </div>
+            {{!-- Map --}}
+            <div class="mapInForm" id="map"></div>
+            {{!-- Address / Lat / Lng--}}
+            <div class="field">
+              <label class="label">Adress</label>
+              <div class="control">
+                <input id="address" class="input" type="text" name="address" value={{this.address}}>
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Lng</label>
+              <div class="control">
+                <input class="input" type="text" name="lng" id="lng" value={{this.location.coordinates.[0]}} >
+              </div>
+            </div>
+            <div class="field">
+              <label class="label">Lat</label>
+              <div class="control">
+                <input class="input" type="text" name="lat" id="lat" value={{this.location.coordinates.[1]}}>
+              </div>
+            </div>
+            {{!-- Dimensions --}}
+            <div class="field">
+              <label for="" class="label">Dimensions:</label>
+              <div class="cc-selector">
+                <input id="dimensionsHS" type="radio" name="dimensionsH" value="S">
+                <label for="S" class="smallCar labelCar">Small</label>
+                <input id="dimensionsHS" type="radio" name="dimensionsH" value="M">
+                <label for="M" class="mediumCar labelCar">Medium</label>
+                <input id="dimensionsHS" type="radio" name="dimensionsH" value="L">
+                <label for="L" class="largeCar labelCar">Large</label>
+              </div>
+            </div>
+            {{!-- Availability --}}
+            <div class="field">
+              <label class="label">Availability</label>
+              <div class="control">
+                <label class="radio">
+                  <input type="radio" value="ALL DAY" name="availability" onclick="hideHours()"> All day
+                </label>
+                <label class="radio">
+                  <input type="radio" value="SPECIFIC HOURS" name="availability" onclick="displayHours()"> Specific hours
+                </label>
+              </div>
+            </div>
+            {{!-- Hours --}}
+            <div id='hours'>
+              <div class="control is-inline-block">
+                <div class="select">
+                  <select class="is-hovered" name="startHour">
+                    <option>Start</option>
+                    <option value="00">00:00</option>
+                    <option value="01">01:00</option>
+                    <option value="02">02:00</option>
+                    <option value="03">03:00</option>
+                    <option value="04">04:00</option>
+                    <option value="05">05:00</option>
+                    <option value="06">06:00</option>
+                    <option value="07">07:00</option>
+                    <option value="08">08:00</option>
+                    <option value="09">09:00</option>
+                    <option value="10">10:00</option>
+                    <option value="11">11:00</option>
+                    <option value="12">12:00</option>
+                    <option value="13">13:00</option>
+                    <option value="14">14:00</option>
+                    <option value="15">15:00</option>
+                    <option value="16">16:00</option>
+                    <option value="17">17:00</option>
+                    <option value="18">18:00</option>
+                    <option value="19">19:00</option>
+                    <option value="20">20:00</option>
+                    <option value="21">21:00</option>
+                    <option value="22">22:00</option>
+                    <option value="23">23:00</option>
+                    <option value="24">24:00</option>
+                  </select>
+                </div>
+              </div>
+              <div class="control is-inline-block">
+                <div class="select">
+                  <select class="is-hovered" name="endHour">
+                    <option>End</option>
+                    <option value="00">00:00</option>
+                    <option value="01">01:00</option>
+                    <option value="02">02:00</option>
+                    <option value="03">03:00</option>
+                    <option value="04">04:00</option>
+                    <option value="05">05:00</option>
+                    <option value="06">06:00</option>
+                    <option value="07">07:00</option>
+                    <option value="08">08:00</option>
+                    <option value="09">09:00</option>
+                    <option value="10">10:00</option>
+                    <option value="11">11:00</option>
+                    <option value="12">12:00</option>
+                    <option value="13">13:00</option>
+                    <option value="14">14:00</option>
+                    <option value="15">15:00</option>
+                    <option value="16">16:00</option>
+                    <option value="17">17:00</option>
+                    <option value="18">18:00</option>
+                    <option value="19">19:00</option>
+                    <option value="20">20:00</option>
+                    <option value="21">21:00</option>
+                    <option value="22">22:00</option>
+                    <option value="23">23:00</option>
+                    <option value="24">24:00</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            {{!-- Button --}}
+            <div class="field">
+              <p class="control">
+                <button type="submit" class="button is-primary">
+                  Update
+                </button>
+              </p>
+            </div>
+          </form>
+        </section>
+        <footer class="modal-card-foot">
+          <button class="button is-success">Save changes</button>
+          <button class="button">Cancel</button>
+        </footer>
+      </div>
+    </div>
     {{/each}}
   </div>
 </section>
@@ -109,4 +310,67 @@
     document.getElementById('button-edit').innerText="Edit  "
     } 
   }
+
+  function showEditCar(){
+    document.getElementById('carEditModal').classList.add('is-active')
+  }
+  function showEditSpace(){
+    document.getElementById('spaceEditModal').classList.add('is-active')
+  }
+  function closeCarModal(){
+    document.getElementById('carEditModal').classList.remove('is-active')
+  }
+  function closeSpaceModal() {
+    document.getElementById('spaceEditModal').classList.remove('is-active')
+  }
+
+  {{!-- Script de create-space --}}
+
+  mapboxgl.accessToken = 'pk.eyJ1IjoiZXJpdmFzZiIsImEiOiJjazBkeG8ydmowYzRuM2JvYjVwbWc5eHkzIn0.sGUiEoqhR6A8o7tgvi2qMA'
+    const map = new mapboxgl.Map({
+      container: "map",
+      style: "mapbox://styles/mapbox/streets-v10",
+    });
+
+    const geocoder = new MapboxGeocoder({ accessToken: mapboxgl.accessToken }, 'top-left')
+
+    document.getElementById("search").appendChild(geocoder.onAdd(map))
+    const address = document.getElementById('address')
+    const lat = document.getElementById('lat')
+    const lng = document.getElementById('lng')
+
+    geocoder.on('result', (e) => {
+      address.value = e.result.place_name;
+      lng.value = e.result.center[0];
+      lat.value = e.result.center[1];
+    })
+
+    map.addControl(new mapboxgl.NavigationControl())
+
+    if (navigator.geolocation) {
+      // Get current position
+      // The permissions dialog will pop up
+      navigator.geolocation.getCurrentPosition(function (position) {
+        // Create an object to match Mapbox's Lat-Lng array format
+        const center = [
+          position.coords.longitude,
+          position.coords.latitude
+        ];
+
+        map.setZoom(12).setCenter(center)
+
+        new mapboxgl.Marker({ color: "red" })
+          .setLngLat(center)
+          .setPopup(new mapboxgl.Popup().setHTML("<h3>You are here</h3>"))
+          .addTo(map);
+      })
+    }
+
+
+    function displayHours() {
+      document.getElementById('hours').style.display = 'block'
+    }
+    function hideHours() {
+      document.getElementById('hours').style.display = 'none'
+    }
 </script>

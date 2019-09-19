@@ -2,14 +2,11 @@ body {
   margin: 0;
   padding: 0; }
 
-.hero-index {
-  background-image: url("../images/parking2.jpg");
+.hero-index, #loginView {
+  background-image: url("../images/City.001.png");
   background-size: cover;
-  background-position: center; }
-
-.bg-color {
-  opacity: 0.7;
-  background-color: #545499; }
+  background-position: center;
+  min-height: calc(100vh - 75px); }
 
 .navbar {
   height: 75px; }
@@ -69,7 +66,7 @@ body {
 #middle {
   display: flex;
   flex-direction: row;
-  align-items: center;
+  align-items: flex-start;
   justify-content: space-around; }
 
 .Card {
