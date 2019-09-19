@@ -9,7 +9,7 @@ const User = require('../models/User')
 const Space = require('../models/Space')
 
 /* GET home page */
-router.get('/', async (req, res, next) => {
+router.get('/', isLoggedIn('/auth/login'),async (req, res, next) => {
   const spaces = await Space.find()
   res.render('index', {spaces})
 })
@@ -22,10 +22,10 @@ router.post('/update-car/:id', isLoggedIn('/auth/login'), catchErrors(updateCar)
 router.get('/delete-car/:id', isLoggedIn('/auth/login'), catchErrors(deleteCar))
 router.get('/create-both', isLoggedIn('/auth/login'), catchErrors(createBoth))
 router.post('/create-both', isLoggedIn('/auth/login'), catchErrors(postBoth))
-router.get('/create-space',createSpace)
-router.post('/create-space', catchErrors(postSpace))
+router.get('/create-space', isLoggedIn('/auth/login'), createSpace)
+router.post('/create-space', isLoggedIn('/auth/login'), catchErrors(postSpace))
 router.post('/update-space/:id', isLoggedIn('/auth/login'), catchErrors(updateSpace))
 router.get('/delete-space/:id', isLoggedIn('/auth/login'), catchErrors(deleteSpace))
-router.get('/space-detail/:id', spaceDetail)
+router.get('/space-detail/:id',isLoggedIn('/auth/login'), spaceDetail)
 
 module.exports = router
