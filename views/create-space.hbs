@@ -1,141 +1,147 @@
-<div class="container">
-  <div class="columns is-centered">
-    <div class="column is-5-tablet is-4-desktop is-8-widescreen">
-      <h1 class="title">Register your available space</h1>
-      <form action="/create-space" method="POST">
-        <div>
-          <p>Search your space location:</p>
-          <div id="search"></div>
-          <small>The location information will autocomplete</small>
-        </div>
-        {{!-- Map --}}
-        <div id="map" style="width: 500px; height: 500px"></div>
-        {{!-- Address / Lat / Lng--}}
-        <div class="field">
-          <label class="label">Adress</label>
-          <div class="control">
-            <input id="address" class="input" type="text" name="address" placeholder="Example: Tonalá 10, Roma Norte, Ciudad de México" readonly>
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Lng</label>
-          <div class="control">
-            <input class="input" type="text" name="lng" id="lng" readonly>
-          </div>
-        </div>
-        <div class="field">
-          <label class="label">Lat</label>
-          <div class="control">
-            <input class="input" type="text" name="lat" id="lat" readonly>
-          </div>
-        </div>
-        {{!-- Dimensions --}}
-        <div class="field">
-          <label class="label">Dimensions</label>
-          <div class="control">
-            <label class="radio">
-              <input type="radio" value="S" name="dimensionsH"> Small
-            </label>
-            <label class="radio">
-              <input type="radio" value="M" name="dimensionsH"> Medium
-            </label>
-            <label class="radio">
-              <input type="radio" value="L" name="dimensionsH"> Large
-            </label>
-          </div>
-        </div>
-        {{!-- Availability --}}
-        <div class="field">
-          <label class="label">Availability</label>
-          <div class="control">
-            <label class="radio">
-              <input type="radio" value="ALL DAY" name="availability" onclick="hideHours()"> All day
-            </label>
-            <label class="radio">
-              <input type="radio" value="SPECIFIC HOURS" name="availability" onclick="displayHours()"> Specific hours
-            </label>
-          </div>
-        </div>
-        {{!-- Hours --}}
-        <div id='hours'>
-          <div class="control is-inline-block">
-            <div class="select">
-              <select class="is-hovered" name="startHour">
-                <option>Start</option>
-                <option value="00">00:00</option>
-                <option value="01">01:00</option>
-                <option value="02">02:00</option>
-                <option value="03">03:00</option>
-                <option value="04">04:00</option>
-                <option value="05">05:00</option>
-                <option value="06">06:00</option>
-                <option value="07">07:00</option>
-                <option value="08">08:00</option>
-                <option value="09">09:00</option>
-                <option value="10">10:00</option>
-                <option value="11">11:00</option>
-                <option value="12">12:00</option>
-                <option value="13">13:00</option>
-                <option value="14">14:00</option>
-                <option value="15">15:00</option>
-                <option value="16">16:00</option>
-                <option value="17">17:00</option>
-                <option value="18">18:00</option>
-                <option value="19">19:00</option>
-                <option value="20">20:00</option>
-                <option value="21">21:00</option>
-                <option value="22">22:00</option>
-                <option value="23">23:00</option>
-                <option value="24">24:00</option>
-              </select>
-            </div>
-          </div>
-          <div class="control is-inline-block">
-            <div class="select">
-            <select class="is-hovered" name="endHour">
-              <option>End</option>
-              <option value="00">00:00</option>
-                <option value="01">01:00</option>
-                <option value="02">02:00</option>
-                <option value="03">03:00</option>
-                <option value="04">04:00</option>
-                <option value="05">05:00</option>
-                <option value="06">06:00</option>
-                <option value="07">07:00</option>
-                <option value="08">08:00</option>
-                <option value="09">09:00</option>
-                <option value="10">10:00</option>
-                <option value="11">11:00</option>
-                <option value="12">12:00</option>
-                <option value="13">13:00</option>
-                <option value="14">14:00</option>
-                <option value="15">15:00</option>
-                <option value="16">16:00</option>
-                <option value="17">17:00</option>
-                <option value="18">18:00</option>
-                <option value="19">19:00</option>
-                <option value="20">20:00</option>
-                <option value="21">21:00</option>
-                <option value="22">22:00</option>
-                <option value="23">23:00</option>
-                <option value="24">24:00</option>
-              </select>
-            </div>
-          </div>
-        </div>
-        {{!-- Button --}}
-        <div class="field">
-          <p class="control">
-            <button type="submit" class="button is-primary">
-              Create Space
-            </button>
-          </p>
-        </div>
-      </form>
+<section class="hero hero-section">
+  <div class="hero-body">
+    <div class="container">
+      <h1 class="title has-text-white	">
+        Submit your Parking Spot
+      </h1>
     </div>
   </div>
-</div>
-
+</section>
+<section>
+  <div class="container">
+    <div class="columns is-centered">
+      <div class="column is-three-quarters">
+        <form action="/create-space" method="POST">
+          <div>
+            <p>Search your available space location:</p>
+            <div id="search"></div>
+            <small>The location information will autocomplete</small>
+          </div>
+          {{!-- Map --}}
+          <div class="mapInForm" id="map"></div>
+          {{!-- Address / Lat / Lng--}}
+          <div class="field">
+            <label class="label">Adress</label>
+            <div class="control">
+              <input id="address" class="input" type="text" name="address" placeholder="Example: Tonalá 10, Roma Norte, Ciudad de México" readonly>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Lng</label>
+            <div class="control">
+              <input class="input" type="text" name="lng" id="lng" readonly>
+            </div>
+          </div>
+          <div class="field">
+            <label class="label">Lat</label>
+            <div class="control">
+              <input class="input" type="text" name="lat" id="lat" readonly>
+            </div>
+          </div>
+          {{!-- Dimensions --}}
+          <div class="field">
+            <label for="" class="label">Dimensions:</label>
+            <div class="cc-selector">
+              <input id="dimensionsWS" type="radio" name="dimensionsH" value="S">
+              <label for="S" class="smallCar labelCar">Small</label>
+              <input id="dimensionsWS" type="radio" name="dimensionsH" value="M">
+              <label for="M" class="mediumCar labelCar">Medium</label>
+              <input id="dimensionsWS" type="radio" name="dimensionsH" value="L">
+              <label for="L" class="largeCar labelCar">Large</label>
+            </div>
+          </div>
+          {{!-- Availability --}}
+          <div class="field">
+            <label class="label">Availability</label>
+            <div class="control">
+              <label class="radio">
+                <input type="radio" value="ALL DAY" name="availability" onclick="hideHours()"> All day
+              </label>
+              <label class="radio">
+                <input type="radio" value="SPECIFIC HOURS" name="availability" onclick="displayHours()"> Specific hours
+              </label>
+            </div>
+          </div>
+          {{!-- Hours --}}
+          <div id='hours'>
+            <div class="control is-inline-block">
+              <div class="select">
+                <select class="is-hovered" name="startHour">
+                  <option>Start</option>
+                  <option value="00">00:00</option>
+                  <option value="01">01:00</option>
+                  <option value="02">02:00</option>
+                  <option value="03">03:00</option>
+                  <option value="04">04:00</option>
+                  <option value="05">05:00</option>
+                  <option value="06">06:00</option>
+                  <option value="07">07:00</option>
+                  <option value="08">08:00</option>
+                  <option value="09">09:00</option>
+                  <option value="10">10:00</option>
+                  <option value="11">11:00</option>
+                  <option value="12">12:00</option>
+                  <option value="13">13:00</option>
+                  <option value="14">14:00</option>
+                  <option value="15">15:00</option>
+                  <option value="16">16:00</option>
+                  <option value="17">17:00</option>
+                  <option value="18">18:00</option>
+                  <option value="19">19:00</option>
+                  <option value="20">20:00</option>
+                  <option value="21">21:00</option>
+                  <option value="22">22:00</option>
+                  <option value="23">23:00</option>
+                  <option value="24">24:00</option>
+                </select>
+              </div>
+            </div>
+            <div class="control is-inline-block">
+              <div class="select">
+              <select class="is-hovered" name="endHour">
+                <option>End</option>
+                <option value="00">00:00</option>
+                  <option value="01">01:00</option>
+                  <option value="02">02:00</option>
+                  <option value="03">03:00</option>
+                  <option value="04">04:00</option>
+                  <option value="05">05:00</option>
+                  <option value="06">06:00</option>
+                  <option value="07">07:00</option>
+                  <option value="08">08:00</option>
+                  <option value="09">09:00</option>
+                  <option value="10">10:00</option>
+                  <option value="11">11:00</option>
+                  <option value="12">12:00</option>
+                  <option value="13">13:00</option>
+                  <option value="14">14:00</option>
+                  <option value="15">15:00</option>
+                  <option value="16">16:00</option>
+                  <option value="17">17:00</option>
+                  <option value="18">18:00</option>
+                  <option value="19">19:00</option>
+                  <option value="20">20:00</option>
+                  <option value="21">21:00</option>
+                  <option value="22">22:00</option>
+                  <option value="23">23:00</option>
+                  <option value="24">24:00</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          {{!-- Button --}}
+          <div class="field">
+            <p class="control">
+              <button type="submit" class="button is-primary">
+                Create Space
+              </button>
+            </p>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>
 {{!-- Map instance --}}
 <script>
   mapboxgl.accessToken = 'pk.eyJ1IjoiZXJpdmFzZiIsImEiOiJjazBkeG8ydmowYzRuM2JvYjVwbWc5eHkzIn0.sGUiEoqhR6A8o7tgvi2qMA'

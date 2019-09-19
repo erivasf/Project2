@@ -28,7 +28,7 @@ body {
   overflow-y: auto; }
 
 #search {
-  width: 50%;
+  width: 100%;
   border: 1px solid #d6d6d6;
   border-radius: 5px;
   margin-bottom: 20px; }
@@ -51,10 +51,11 @@ body {
 
 /*Forms*/
 .hero-section {
-  background-color: #545499; }
+  background-color: #545499;
+  margin-bottom: 10vh; }
 
 .cc-selector {
-  margin-top: 10vh; }
+  margin-top: 5vh; }
 
 .cc-selector input {
   position: absolute;
@@ -96,5 +97,10 @@ body {
 
 .largeCar {
   background-image: url("../images/carLarge.png"); }
+
+.mapInForm {
+  width: 100%;
+  height: 300px;
+  margin-bottom: 5vh; }
 
 /*# sourceMappingURL=style.css.map */
