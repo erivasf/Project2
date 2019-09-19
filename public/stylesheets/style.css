@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0; }
 
-.hero {
+.hero-index {
   background-image: url("../images/parking2.jpg");
   background-size: cover;
   background-position: center; }
@@ -48,5 +48,53 @@ body {
 
 .dimensions-image {
   width: 150px; }
+
+/*Forms*/
+.hero-section {
+  background-color: #545499; }
+
+.cc-selector {
+  margin-top: 10vh; }
+
+.cc-selector input {
+  position: absolute;
+  z-index: 999; }
+
+.labelCar {
+  cursor: pointer;
+  background-size: contain;
+  background-repeat: no-repeat;
+  width: 200px;
+  height: 100px;
+  display: inline-block;
+  -webkit-transition: all 100ms ease-in;
+  -moz-transition: all 100ms ease-in;
+  transition: all 100ms ease-in;
+  -webkit-filter: grayscale(1) opacity(0.3);
+  -moz-filter: grayscale(1) opacity(0.3);
+  filter: grayscale(1) opacity(0.3);
+  margin-left: 20px; }
+
+.labelCar:hover {
+  -webkit-filter: grayscale(0.5) opacity(0.9);
+  -moz-filter: grayscale(0.5) opacity(0.9);
+  filter: grayscale(0.5) opacity(0.9); }
+
+.cc-selector input:active + .labelCar {
+  opacity: .9; }
+
+.cc-selector input:checked + .labelCar {
+  -webkit-filter: grayscale(0.5) opacity(0.9);
+  -moz-filter: grayscale(0.5) opacity(0.9);
+  filter: grayscale(0.5) opacity(0.9); }
+
+.smallCar {
+  background-image: url("../images/carSmall.png"); }
+
+.mediumCar {
+  background-image: url("../images/carMedium.png"); }
+
+.largeCar {
+  background-image: url("../images/carLarge.png"); }
 
 /*# sourceMappingURL=style.css.map */
