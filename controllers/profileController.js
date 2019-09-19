@@ -4,43 +4,23 @@ const Car = require('../models/Car');
 const Space = require('../models/Space')
 
 exports.showProfile = async (req, res) => {
-  const user = await User.findById(req.user.id).populate('profile')
-  console.log(user)
-  res.render('profile', user)
+  
+  const user = await User.findById(req.user.id).populate('profile').populate('car').populate('space')
+  cars = user.car
+  spaces = user.space
+  res.render('profile', {user,cars, spaces})
 }
-
-// exports.postProfile = async (req, res) => {
-//   console.log('PARAMS: ' +  req.params)
-//   const id = req.user._id
-//   const user = await User.findById(id)
-//   const {photo, name} = req.body
-//   await Profile.findByIdAndUpdate(user.profile, {name, photo})
-// }
 
 exports.editProfile = async (req, res) => {
   const {name} = req.body
   const {url: img} = req.file
-  console.log(req.body)
   const { profile: profileId} = await User.findById(req.user.id)
   await Profile.findByIdAndUpdate(profileId, {name,img})
   res.redirect('/profile')
 }
 
-exports.createCar = async (req, res) => {
-  res.render('create-car')
-}
-
 exports.createBoth = async (req, res) => {
   res.render('create-both')
-}
-
-exports.postCar = async (req, res) => {
-  const user = await User.findById(req.user.id)
- const {plateNumber,model, color, dimensionsW} = req.body
- const car = await Car.create({plateNumber,model,color,dimensions:dimensionsW})
-   user.car = car.id
-   user.save()
-   res.redirect('/profile')
 }
 
 exports.postBoth = async (req, res) => {
@@ -65,8 +45,8 @@ exports.postBoth = async (req, res) => {
       interval: [startHour, endHour]
     }
   })
-  user.space = space.id
-  user.car = car.id
+  user.space.push(space.id)
+  user.car.push(car.id)
   user.save()
 
   res.redirect('/profile')  

@@ -61,7 +61,7 @@ exports.login = async (req, res) => {
   const user = await User.findById(id).populate('profile')
   console.log(user)
   if(user.profileStatus === 'Incomplete Profile'){
-    res.render('profile', user)
+    res.redirect('/profile')
   }else{
     res.redirect('/')
   }

@@ -1,23 +1,28 @@
-<section class="section">
-  <div class="container">
-    <h1 class="title">Profile</h1>
-    <img src="{{profile.img}}" alt="" width="200" />
-    <p>{{profile.name}}</p>
-    <p>{{user.email}}</p>
-    <a href="/create-car" class="button is-primary">Need a space</a>
-    <a href="/create-space" class="button is-primary">Have a space</a>
+<section id="main" class="container-profile">
+  <div id="profile-container" class="container-profile">
+  <div id="profilepic" class="container-profile">
+    <h1 class="title">Welcome, {{user.profile.name}}.</h1>
+    <img src="{{user.profile.img}}" alt="" width="150" id="profilePic"/>
+    </div>
+    <div id="buttons" class="container-profile"> 
+    <a href="/create-car" class="button is-primary">Add a vehicle</a>
+    <a href="/create-space" class="button is-primary">Add a space</a>
     <a href="/create-both" class="button is-primary">Both</a>
-  </div>
+    </div>
+    </div>
   <hr>
-  <div>
-  <h2>Would you like to change something?</h2>
-  <a class="button is-primary" onclick="showForm()">Edite profile</a>
+  <div id="options" class="container-profile">
+  <div id="top" class="container-profile">
+  <h2 class="label" >Would you like to change something?</h2>
+  <br>
+  <a id="button-edit"class="button is-primary" onclick="showForm()">Edit</a>
   </div>
-  <div id="profile-edit">
-    <h3>Update your info</h3>
-    <div class="box">
-      <form action="/profile" method="POST" enctype="multipart/form-data">
+  <div id="profile-edit" style="display: none" class="container-profile">
+    <div id="box" class="container-profile">
+      <form action="/profile" method="POST" enctype="multipart/form-data" class="container-profile">
+      <br>
         <label for="profile-picture" class="label">Profile Picture</label>
+        <br>
         <div class="file has-name is-fullwidth">
           <label class="file-label">
             <input class="file-input" type="file" name="photo">
@@ -34,19 +39,22 @@
             </span>
           </label>
         </div>
-        <div class="field">
+        <div class="field container-profile">
+          <br>
           <label for="name" class="label">Username</label>
+          <br>
           <p class="control has-icons-left has-icons-right">
             <input class="input" type="text" name="name" placeholder="Enter name">
             <span class="icon is-small is-left">
               <i class="fas fa-user"></i>
             </span>
+            <br>
             <span class="icon is-small is-right">
               <i class="fas fa-check"></i>
             </span>
           </p>
         </div>
-          <div class="field">
+          <div class="field" >
             <p class="control">
               <button class="button is-primary" type="submit">
                 Update
@@ -54,11 +62,51 @@
             </p>
           </div>
         </form>
-  </div>
+     </div>
     </div>
+</div>
+</section>
+<hr>
+<section id="middle" class="container-profile">
+  <div class="container-profile column is-half" id="AllCars"> 
+    <h2 class="title has-text-centered"> Your cars</h2>
+      {{#each cars}}
+      <div id='carCard' class="box">
+        <h3>{{this.model}}</h3>
+        <br>
+        <h3>{{this.color}}</h3>
+        <br>
+        <h3>{{this.plateNumber}}</h3>
+        <br>
+        <h3>{{this.dimensions}}</h3>
+      </div>
+      <br>
+      {{/each}}
+  </div>
+  <div class="container-profile column is-half" id="AllSpaces">
+    <h2 class="title has-text-centered"> Your spaces</h2>
+    {{#each spaces}}
+    <div id='spaceCard' class="box">
+      <h3>{{this.address}}</h3>
+      <br>
+      <h3>{{this.location.coordinates}}</h3>
+      <br>
+      <h3>{{this.availability.period}}</h3>
+      <br>
+      <h3>{{this.dimensions}}</h3>
+    </div>
+    <br>
+    {{/each}}
+  </div>
 </section>
 <script>
   function showForm(){
+    if(document.getElementById('profile-edit').style.display === 'none'){
     document.getElementById('profile-edit').style.display='block'
+    document.getElementById('button-edit').innerText = "Back"
+    }else{
+    document.getElementById('profile-edit').style.display = 'none'
+    document.getElementById('button-edit').innerText="Edit  "
+    } 
   }
 </script>

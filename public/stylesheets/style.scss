@@ -38,3 +38,48 @@ body{
 #map-home{
   margin: 7% 0;
 }
+#main{
+  display: flex;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-around;
+}
+#buttons{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+  height: 150px;
+  justify-content: space-between;
+}
+#profile-container{
+  height: 380px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
+}
+// 
+.container-profile {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+
+#profilePic{
+ border-radius: 25px; 
+}
+
+#middle{
+   display: flex;
+   flex-direction: row;
+   align-items: center;
+   justify-content: space-around;
+}
+
+.Card{
+  display: flex;
+  align-items: center;
+  flex-direction: column;
+}
+

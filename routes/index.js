@@ -1,6 +1,7 @@
 const router = require('express').Router()
-const {showProfile,editProfile,postProfile,createProfile,createCar,createBoth,postCar,postBoth} = require('../controllers/profileController')
-const {createSpace, postSpace} = require('../controllers/spaceController')
+const {showProfile,editProfile,postProfile,createProfile,createBoth,postBoth} = require('../controllers/profileController')
+const {createCar, postCar, carPage} = require('../controllers/carController')
+const {createSpace, postSpace, spacePage} = require('../controllers/spaceController')
 const catchErrors = require('../middlewares/catchErrors')
 const isLoggedIn = require('../middlewares/isLoggedIn')
 const uploadCloud = require('../config/cloudinary')
@@ -13,7 +14,7 @@ router.get('/', async (req, res, next) => {
   res.render('index', {spaces})
 })
 
-router.get('/profile', isLoggedIn('/auth/login'), catchErrors(showProfile))
+router.get('/profile', isLoggedIn('/auth/login'), catchErrors(showProfile, spacePage))
 router.post('/profile', isLoggedIn('/auth/login'), uploadCloud.single('photo'), catchErrors(editProfile))
 router.get('/create-car', isLoggedIn('/auth/login'), catchErrors(createCar))
 router.post('/create-car', isLoggedIn('/auth/login'), catchErrors(postCar))

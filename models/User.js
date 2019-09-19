@@ -27,14 +27,14 @@ const userSchema = new Schema({
     type: String,
     unique:true
   },
-  space: {
+  space: [{
   ref: 'Space',
   type: Schema.Types.ObjectId
-}, 
-  car: {
+}], 
+  car: [{
     ref: 'Car', 
     type: Schema.Types.ObjectId
-  },
+  }],
   profileStatus: {
     type: String, 
     enum:['Complete Profile', 'Incomplete Profile'], 

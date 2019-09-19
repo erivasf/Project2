@@ -26,7 +26,20 @@ exports.postSpace = async (req, res, next) => {
       interval:[startHour,endHour]
     }
   })
-  user.space = space.id
+  user.space.push(space.id)
   user.save()
   res.redirect('/profile')
+}
+
+exports.placePage = async (req, res, next) => {
+  const user = await User.findById(req.user.id)
+  console.log('USER: ' + user)
+  const places = []
+  console.log('placeS: ' + places)
+  user.place.forEach(place => {
+    let obj = Place.findById(place)
+    places.push(obj)
+  })
+  console.log('placeS: ' + places)
+  res.render('profile', {places})
 }
