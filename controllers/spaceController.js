@@ -42,6 +42,8 @@ exports.placePage = async (req, res, next) => {
   })
   console.log('placeS: ' + places)
   res.render('profile', {places})
+}
+
 exports.spaceDetail = async(req, res) =>{
   const {id} = req.params
   const space = await Space.findById(id)

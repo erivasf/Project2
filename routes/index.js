@@ -1,7 +1,7 @@
 const router = require('express').Router()
 const {showProfile,editProfile,postProfile,createProfile,createBoth,postBoth} = require('../controllers/profileController')
 const {createCar, postCar, carPage} = require('../controllers/carController')
-const {createSpace, postSpace, spacePage} = require('../controllers/spaceController')
+const {createSpace, postSpace, spacePage, spaceDetail} = require('../controllers/spaceController')
 const catchErrors = require('../middlewares/catchErrors')
 const isLoggedIn = require('../middlewares/isLoggedIn')
 const uploadCloud = require('../config/cloudinary')
