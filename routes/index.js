@@ -1,6 +1,6 @@
 const router = require('express').Router()
 const {showProfile,editProfile,postProfile,createProfile,createCar,createBoth,postCar,postBoth} = require('../controllers/profileController')
-const {createSpace, postSpace} = require('../controllers/spaceController')
+const {createSpace, postSpace, spaceDetail} = require('../controllers/spaceController')
 const catchErrors = require('../middlewares/catchErrors')
 const isLoggedIn = require('../middlewares/isLoggedIn')
 const uploadCloud = require('../config/cloudinary')
@@ -21,5 +21,6 @@ router.get('/create-both', isLoggedIn('/auth/login'), catchErrors(createBoth))
 router.post('/create-both', isLoggedIn('/auth/login'), catchErrors(postBoth))
 router.get('/create-space',createSpace)
 router.post('/create-space', catchErrors(postSpace))
+router.get('/space-detail/:id', spaceDetail)
 
 module.exports = router

@@ -37,4 +37,16 @@ body {
 #map-home {
   margin: 7% 0; }
 
+/*Space Detail*/
+.space-hero {
+  background-image: url("../images/parking3.jpg");
+  background-position: 0px 500px;
+  margin-bottom: 10vh; }
+
+.property {
+  font-weight: bold; }
+
+.dimensions-image {
+  width: 150px; }
+
 /*# sourceMappingURL=style.css.map */
