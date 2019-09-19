@@ -1,4 +1,4 @@
-<section class="hero is-primary is-medium">
+<section class="hero is-primary hero-index">
   <div class="bg-color">
   <div class="hero-body">
     <div class="container">
@@ -29,6 +29,7 @@
               <p>{{space.address}}</p>
               <p>{{space.availability.period}}</p>
               <a class="button is-small is-primary" onclick="spotLocation({{space.location}})">Spot it</a>
+              <a href="space-detail/{{space.id}}" class="button is-small is-info">See More</a>
               <hr>
             </div>
             {{/each}}

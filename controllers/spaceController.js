@@ -31,6 +31,7 @@ exports.postSpace = async (req, res, next) => {
   res.redirect('/profile')
 }
 
+<<<<<<< HEAD
 exports.placePage = async (req, res, next) => {
   const user = await User.findById(req.user.id)
   console.log('USER: ' + user)
@@ -42,4 +43,27 @@ exports.placePage = async (req, res, next) => {
   })
   console.log('placeS: ' + places)
   res.render('profile', {places})
+=======
+exports.spaceDetail = async(req, res) =>{
+  const {id} = req.params
+  const space = await Space.findById(id)
+  let image
+  let size
+  switch (space.dimensions) {
+    case 'S':
+      image = '/images/carSmall.png'
+      size = 'Small'
+      break;
+    case 'M':
+      image = '/images/carMedium.png'
+      size =  'Medium'
+      break;
+    case 'L':
+      image = '/images/carLarge.png'
+      size = 'Large'
+      break;
+  }
+  let context = {space, image, size} 
+  res.render('space-detail', context)
+>>>>>>> ddc59b35e29d4fceb681a67bce3a0e9255cd19df
 }
