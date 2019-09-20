@@ -23,3 +23,9 @@ exports.createRsv = async(req, res) => {
   user.save()
   res.redirect('/profile')
 }
+
+exports.cancelRsv = async (req, res) => {
+  const {id} = req.params
+  await Rsv.findByIdAndDelete(id)
+  res.redirect('/profile')
+}
