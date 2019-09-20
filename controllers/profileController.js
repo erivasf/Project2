@@ -2,13 +2,15 @@ const User = require('../models/User')
 const Profile = require('../models/Profile')
 const Car = require('../models/Car');
 const Space = require('../models/Space')
+const Rsv = require('../models/Rsv')
 
 exports.showProfile = async (req, res) => {
   
-  const user = await User.findById(req.user.id).populate('profile').populate('car').populate('space')
+  const user = await User.findById(req.user.id).populate('profile').populate('car').populate('space').populate('rsv')
+  rsvs = user.rsv
   cars = user.car
   spaces = user.space
-  res.render('profile', {user,cars, spaces})
+  res.render('profile', {user,cars, spaces, rsvs})
 }
 
 exports.editProfile = async (req, res) => {

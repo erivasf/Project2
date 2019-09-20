@@ -27,7 +27,7 @@ router.get('/create-space', isLoggedIn('/auth/login'), createSpace)
 router.post('/create-space', isLoggedIn('/auth/login'), catchErrors(postSpace))
 router.post('/update-space/:id', isLoggedIn('/auth/login'), catchErrors(updateSpace))
 router.get('/delete-space/:id', isLoggedIn('/auth/login'), catchErrors(deleteSpace))
-router.get('/space-detail/:id',isLoggedIn('/auth/login'), spaceDetail)
-router.post('/create-rsv/:id', isLoggedIn('/auth/login'),createRsv)
+router.get('/space-detail/:id',isLoggedIn('/auth/login'), catchErrors(spaceDetail))
+router.post('/create-rsv/:id', isLoggedIn('/auth/login'), catchErrors(createRsv))
 
 module.exports = router

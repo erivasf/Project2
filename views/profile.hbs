@@ -68,8 +68,8 @@
 </section>
 <hr>
 <section id="middle" class="container-profile">
-  <div class="container-profile column is-half" id="AllCars"> 
-    <h2 class="title has-text-centered"> Your cars</h2>
+  <div class="container-profile column is-one-third" id="AllCars"> 
+    <h2 class="title has-text-centered is-size-4"> Your cars</h2>
       {{#each cars}}
       <div id='carCard' class="box">
         <label>Model:</label>
@@ -138,8 +138,8 @@
       </div>
       {{/each}}
   </div>
-  <div class="container-profile column is-half" id="AllSpaces">
-    <h2 class="title has-text-centered"> Your spaces</h2>
+  <div class="container-profile column is-one-third" id="AllSpaces">
+    <h2 class="title has-text-centered is-size-4"> Your spaces</h2>
     {{#each spaces}}
     <div id='spaceCard' class="box">
       <label>Address:</label>
@@ -298,6 +298,20 @@
       </div>
     </div>
     {{/each}}
+  </div>
+  <di class="container-profile column is-one-third" id="AllSpaces">
+    <h2 class="title has-text-centered is-size-4">Reservations</h2>
+      {{#each rsvs}}
+      <div id='spaceCard' class="box">
+        <label>Date:</label>
+        <h3 class="box">{{this.day}}</h3>
+        <label>Start-time:</label>
+        <h3 class="box">{{this.starts}}</h3>
+        <label>End-time:</label>
+        <h3 class="box">{{this.ends}}</h3>
+      </div>
+      <br>
+      {{/each}}
   </div>
 </section>
 <script>

@@ -41,10 +41,10 @@ const userSchema = new Schema({
     default: 'Incomplete Profile'
   }
   , 
- rsv: {
+ rsv: [{
     ref: 'Rsv',
     type: Schema.Types.ObjectId
-  }
+  }]
 },
  {
   timestamps: true

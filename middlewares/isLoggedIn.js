@@ -1,6 +1,7 @@
+
 module.exports = route => (req, res, next) => {
   if (req.isAuthenticated()) {
-    next()
+    next()  
   } else {
     res.redirect(route)
   }

@@ -18,5 +18,8 @@ exports.createRsv = async(req, res) => {
     starts: startTime,
     ends: endTime
   })
-  console.log(rsv)
+
+  user.rsv.push(rsv.id)
+  user.save()
+  res.redirect('/profile')
 }

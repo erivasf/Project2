@@ -2,11 +2,23 @@ body {
   margin: 0;
   padding: 0; }
 
-.hero-index, #loginView {
+.hero-index, #loginView, #signupView {
   background-image: url("../images/City.001.png");
   background-size: cover;
   background-position: center;
   min-height: calc(100vh - 75px); }
+
+.header-name {
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center; }
+
+.header-name img {
+  width: 140px; }
+
+.header-title {
+  color: white; }
 
 .navbar {
   height: 75px; }
