@@ -157,3 +157,20 @@ body{
   height: 300px;
   margin-bottom: 5vh;
 }
+#logoIndex{
+  width: 150px;
+  top: 35%; 
+  left: 35%;
+}
+
+.hero-index{
+  // display: flex;
+  // flex-direction: column;
+  // justify-content: flex-end;
+  // align-items: center;
+}
+#index{
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+}

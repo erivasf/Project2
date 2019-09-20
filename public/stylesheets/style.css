@@ -152,4 +152,14 @@ body {
   height: 300px;
   margin-bottom: 5vh; }
 
+#logoIndex {
+  width: 150px;
+  top: 35%;
+  left: 35%; }
+
+#index {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end; }
+
 /*# sourceMappingURL=style.css.map */
