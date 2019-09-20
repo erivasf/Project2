@@ -67,7 +67,7 @@
 </div>
 </section>
 <hr>
-<section id="middle" class="container-profile">
+<section id="middle" class="container container-profile">
   <div class="container-profile column is-one-third" id="AllCars"> 
     <h2 class="title has-text-centered is-size-4"> Your cars</h2>
       {{#each cars}}
@@ -309,6 +309,7 @@
         <h3 class="box">{{this.starts}}</h3>
         <label>End-time:</label>
         <h3 class="box">{{this.ends}}</h3>
+        <a href="/cancel-rsv/{{this.id}}"> <button class="button is-danger">Cancel</button></a>
       </div>
       <br>
       {{/each}}

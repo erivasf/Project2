@@ -36,19 +36,3 @@ exports.deleteCar = async (req, res) => {
   await Car.findByIdAndDelete(id)
   res.redirect('/profile')
 }
-
-
-
-// exports.carPage = async (req, res, next) => {
-//   console.log(">>>>>", req.user)
-//   const user = await User.findById(req.user.id)
-//   console.log('USER: ' + user)
-//   const cars = []
-//   console.log('CARS: ' + cars)
-//   user.car.forEach(elCar=> {
-//     let obj = Car.findById(elCar)
-//     cars.push(obj)
-//   })
-//   console.log('CARS: ' + cars)
-//   res.render('profile', {cars})
-// }

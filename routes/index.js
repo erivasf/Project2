@@ -2,7 +2,7 @@ const router = require('express').Router()
 const {showProfile,editProfile,postProfile,createProfile,createBoth,postBoth} = require('../controllers/profileController')
 const {createCar, postCar, carPage, updateCar, deleteCar} = require('../controllers/carController')
 const {createSpace, postSpace, spacePage, spaceDetail, updateSpace, deleteSpace} = require('../controllers/spaceController')
-const {createRsv} = require('../controllers/rsvController')
+const {createRsv, cancelRsv} = require('../controllers/rsvController')
 const catchErrors = require('../middlewares/catchErrors')
 const isLoggedIn = require('../middlewares/isLoggedIn')
 const uploadCloud = require('../config/cloudinary')
@@ -29,5 +29,6 @@ router.post('/update-space/:id', isLoggedIn('/auth/login'), catchErrors(updateSp
 router.get('/delete-space/:id', isLoggedIn('/auth/login'), catchErrors(deleteSpace))
 router.get('/space-detail/:id',isLoggedIn('/auth/login'), catchErrors(spaceDetail))
 router.post('/create-rsv/:id', isLoggedIn('/auth/login'), catchErrors(createRsv))
+router.get('/cancel-rsv/:id', isLoggedIn('/auth/login'), catchErrors(cancelRsv))
 
 module.exports = router

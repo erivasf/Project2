@@ -8,7 +8,6 @@ exports.signupForm = (req, res) => {
 
 exports.signup = async (req, res) => {
   const {email,password} = req.body
-  console.log({email,password})
   //Token
   const characters = '0123456789abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ';
   let token = '';
@@ -67,7 +66,6 @@ exports.loginForm = (req, res) => {
 exports.login = async (req, res) => {
   const {_id: id} = req.user
   const user = await User.findById(id).populate('profile')
-  console.log(user)
   if(user.profileStatus === 'Incomplete Profile'){
     res.redirect('/profile')
   }else{

@@ -15,7 +15,7 @@ body {
   align-items: center; }
 
 .header-name img {
-  width: 140px; }
+  width: 120px; }
 
 .header-title {
   color: white; }
@@ -33,7 +33,7 @@ body {
   margin-top: 20px;
   padding: 30px 20px;
   border-radius: 10px;
-  height: 450px;
+  height: 330px;
   overflow-y: auto; }
 
 #search {
@@ -90,7 +90,12 @@ body {
 .space-hero {
   background-image: url("../images/parking3.jpg");
   background-position: 0px 500px;
-  margin-bottom: 10vh; }
+  margin-bottom: 10vh;
+  background-size: cover; }
+
+.bg-color-space {
+  background-color: #545499;
+  opacity: 0.6; }
 
 .property {
   font-weight: bold; }
