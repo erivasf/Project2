@@ -22,8 +22,11 @@ Usuarios de prueba:
 ### Para instalar:
 Clona el repositorio con:
 
+```git clone https://github.com/erivasf/Project2.git```
+
 Para instalar todas las dependencias utiliza:
-npm i
+
+```npm i```
 
 ### Creado por:
 + Elías Rivas - [erivasf](https://github.com/erivasf)
@@ -31,7 +34,5 @@ npm i
 
 ### Aprendizajes
 
-
-
-
+Con este trabajo aprendimos la importancia que hay en la investigación y planeación detrás de cualquier desarrollo, en nuestro caso los modelos y sus relaciones fueron rediseñados y replanteados más de una vez. De este tema derivaron análisis para el flujo de nuestra aplicación y de como se vería este flujo en nuestro front-end.
 
