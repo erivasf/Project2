@@ -41,8 +41,9 @@ const userSchema = new Schema({
     default: 'Incomplete Profile'
   }
   , 
-  rating:{
-    type: [Number]
+ rsv: {
+    ref: 'Rsv',
+    type: Schema.Types.ObjectId
   }
 },
  {

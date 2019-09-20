@@ -19,6 +19,10 @@ const spaceSchema = new Schema({
       enum: ["ALL DAY", "SPECIFIC HOURS"]
     }, 
     interval:[Number] //En formato de 24 hrs  Ej: [08, 20]
+  }, 
+  rsv:{
+    ref: 'Rsv',
+    type: Schema.Types.ObjectId
   }
 },{
     timestamps:true

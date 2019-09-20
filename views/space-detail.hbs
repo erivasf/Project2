@@ -21,12 +21,60 @@
       <p><span class="property">Dimensions:</span> {{size}}</p>
       <p><span class="property">Address:</span> {{space.address}}</p>
       <p><span class="property">Availability:</span> {{space.availability.period}}</p>
-      <a href="/" class="button is-primary">Reserve</a>
+      <a class="button is-primary" onclick="displayModal()">Reserve</a>
     </div>
   </div>
 </div>
 
+<div id="rsv" class="modal">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Make your reservation!</p>
+      <button id ="closeRsv" class="delete" aria-label="close" onclick="closeModal()"></button>
+    </header>
+    <section class="modal-card-body">
+      <!-- Content ... -->
+      <form action="/create-rsv/{{space._id}}" method="POST">
+        <div class="field">
+          <label class="label">Select date!</label>
+          <div class="control">
+            <input class="input" type="date" name="rsvDate">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Select start-time!</label>
+          <div class="control">
+            <input class="input" type="time" min="{{space.availability.interval.[0]}}:00" max="{{space.availability.interval.[1]}}:00" name="startTime">
+          </div>
+        </div>
+        <div class="field">
+          <label class="label">Select end-time!</label>
+          <div class="control">
+            <input class="input" type="time" min="{{space.availability.interval.[0]}}:00"
+              max="{{space.availability.interval.[1]}}:00" name="endTime">
+          </div>
+        </div>
+        <div class="field">
+          <p class="control">
+            <button type="submit" class="button is-primary">
+              Submit
+            </button>
+          </p>
+        </div>
+        </div>
+      </form>
+    </section>
+  </div>
+</div>
+
 <script>
+  function displayModal() {
+    document.getElementById('rsv').classList.add("is-active")
+  }
+  function closeModal(){
+    document.getElementById('rsv').classList.remove("is-active")
+  }
   mapboxgl.accessToken = "pk.eyJ1IjoibmVyd2VuMjI5MSIsImEiOiJjazBkeG9sN3MwYzRhM3FybmdpNGR6eWJnIn0.CLSMkNf7rWHwBo-jX7eNGw";
   const map = new mapboxgl.Map({
     container: "map",
